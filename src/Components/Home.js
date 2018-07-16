@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 
 class Home extends Component {
   render() {
-    return <h1>Blaaa</h1>;
+    return (
+      <Fragment>
+        <h1>Witaj nieznajomy...</h1>
+      </Fragment>
+    );
   }
 }
 

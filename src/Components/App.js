@@ -6,8 +6,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Link to="/home">
-          <button>Click Here to Continue</button>
+        <Link to="/login">
+          <button>Click Here to login</button>
         </Link>
       </div>
     );
