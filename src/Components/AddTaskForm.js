@@ -10,7 +10,6 @@ class AddTaskForm extends Component {
     const taskTitle = this.taskTitleRef.current.value;
     const taskDesc = this.taskDescRef.current.value;
     const taskEstTime = this.taskEstTime.current.value;
-    console.log(taskTitle, taskDesc, taskEstTime);
     const task = {
       taskTitle,
       taskDesc,

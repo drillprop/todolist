@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
 import PropTypes from "prop-types";
+import ShowTasks from "./ShowTasks";
 
 class Dashboard extends Component {
   state = {
@@ -10,7 +11,6 @@ class Dashboard extends Component {
     addTask: PropTypes.func
   };
   addTask = task => {
-    //copy tasks
     const tasks = { ...this.state.tasks };
     tasks[`task${Date.now()}`] = task;
     this.setState({
@@ -22,6 +22,7 @@ class Dashboard extends Component {
       <Fragment>
         <h1>Witaj nieznajomy...</h1>
         <AddTaskForm addTask={this.addTask} />
+        <ShowTasks tasks={this.state.tasks} />
       </Fragment>
     );
   }
