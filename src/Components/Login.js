@@ -8,7 +8,7 @@ class Login extends Component {
         <input id="username" type="text" placeholder="Username" />
         <label htmlFor="password">Password:</label>
         <input id="password" type="password" placeholder="Password" />
-        <Link to="/home">
+        <Link to="/dashboard">
           <button type="submit"> Log In</button>
         </Link>
       </form>

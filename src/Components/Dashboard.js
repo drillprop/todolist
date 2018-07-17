@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import TaskForm from "./TaskForm";
 
-class Home extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <Fragment>
@@ -12,4 +12,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Dashboard;
