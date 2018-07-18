@@ -4,7 +4,18 @@ import ShowTasks from "./ShowTasks";
 
 class Dashboard extends Component {
   state = {
-    tasks: {}
+    tasks: {
+      taskone: {
+        taskTitle: "task One",
+        taskDesc: "some task",
+        taskEstTime: "5"
+      },
+      tasktwo: {
+        taskTitle: "task two",
+        taskDesc: "some task",
+        taskEstTime: "3"
+      }
+    }
   };
   addTask = task => {
     const tasks = { ...this.state.tasks };
