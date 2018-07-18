@@ -1,22 +1,19 @@
 import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
+import base from "../base";
 
 class Dashboard extends Component {
   state = {
-    tasks: {
-      taskone: {
-        taskTitle: "task One",
-        taskDesc: "some task",
-        taskEstTime: "5"
-      },
-      tasktwo: {
-        taskTitle: "task two",
-        taskDesc: "some task",
-        taskEstTime: "3"
-      }
-    }
+    tasks: {}
   };
+  componentDidMount() {
+    this.ref = base.syncState("dashboard/tasks", {
+      context: this,
+      state: "tasks"
+    });
+  }
+
   addTask = task => {
     const tasks = { ...this.state.tasks };
     tasks[`task${Date.now()}`] = task;
@@ -29,7 +26,7 @@ class Dashboard extends Component {
   };
   removeTask = task => {
     const tasks = { ...this.state.tasks };
-    delete tasks[task];
+    tasks[task] = null;
     this.setState({ tasks });
   };
 
