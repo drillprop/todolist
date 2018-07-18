@@ -5,6 +5,15 @@ class EditTaskForm extends Component {
   taskTitleRef = React.createRef();
   taskDescRef = React.createRef();
   taskEstTime = React.createRef();
+  static propTypes = {
+    keyName: PropTypes.string,
+    taskTitle: PropTypes.string,
+    taskDesc: PropTypes.string,
+    taskEstTime: PropTypes.string,
+    editTask: PropTypes.func,
+    makeTaskEditable: PropTypes.func
+  };
+
   updateTask = ev => {
     ev.preventDefault();
     const { keyName, editTask, makeTaskEditable } = this.props;
