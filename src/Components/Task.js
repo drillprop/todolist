@@ -8,10 +8,12 @@ class Task extends Component {
       taskEstTime: PropTypes.string
     })
   };
+  taskRef = React.createRef();
+
   render() {
     const { taskTitle, taskDesc, taskEstTime } = this.props.details;
     return (
-      <div className="task">
+      <div draggable className="task">
         <h4>{taskTitle}</h4>
         <h4>{taskDesc}</h4>
         <h4>{taskEstTime}</h4>
