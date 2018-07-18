@@ -7,7 +7,7 @@ class EditTaskForm extends Component {
   taskEstTime = React.createRef();
   static propTypes = {
     keyName: PropTypes.string,
-    taskTitle: PropTypes.string,
+    taskTitle: PropTypes.string.isRequired,
     taskDesc: PropTypes.string,
     taskEstTime: PropTypes.string,
     editTask: PropTypes.func,

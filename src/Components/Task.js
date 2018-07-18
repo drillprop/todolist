@@ -12,6 +12,7 @@ class Task extends Component {
       taskEstTime: PropTypes.string
     }),
     editTask: PropTypes.func,
+    removeTask: PropTypes.func,
     keyName: PropTypes.string
   };
 
@@ -31,6 +32,9 @@ class Task extends Component {
           <h4>{taskDesc}</h4>
           <h4>{taskEstTime}</h4>
           <button onClick={this.makeTaskEditable}>Edit Task</button>
+          <button onClick={() => this.props.removeTask(this.props.keyName)}>
+            Remove item
+          </button>
         </div>
       );
     }

@@ -27,13 +27,22 @@ class Dashboard extends Component {
     tasks[task] = updatedTask;
     this.setState({ tasks });
   };
+  removeTask = task => {
+    const tasks = { ...this.state.tasks };
+    delete tasks[task];
+    this.setState({ tasks });
+  };
 
   render() {
     return (
       <Fragment>
         <h1>Witaj nieznajomy...</h1>
         <AddTaskForm addTask={this.addTask} />
-        <ShowTasks tasks={this.state.tasks} editTask={this.editTask} />
+        <ShowTasks
+          tasks={this.state.tasks}
+          editTask={this.editTask}
+          removeTask={this.removeTask}
+        />
       </Fragment>
     );
   }
