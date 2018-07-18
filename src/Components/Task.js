@@ -6,7 +6,8 @@ class Task extends Component {
       taskTitle: PropTypes.string,
       taskDesc: PropTypes.string,
       taskEstTime: PropTypes.string
-    })
+    }),
+    editTask: PropTypes.func.isRequired
   };
   taskRef = React.createRef();
 

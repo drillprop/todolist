@@ -8,15 +8,16 @@ class ShowTasks extends Component {
       taskTitle: PropTypes.string,
       taskDesc: PropTypes.string,
       taskEstTime: PropTypes.string
-    })
+    }),
+    editTask: PropTypes.func
   };
   render() {
-    const { tasks } = this.props;
+    const { tasks, editTask } = this.props;
     const tasksKeys = Object.keys(this.props.tasks);
     return (
       <div>
         {tasksKeys.map(task => {
-          return <Task key={task} details={tasks[task]} />;
+          return <Task key={task} details={tasks[task]} editTask={editTask} />;
         })}
       </div>
     );

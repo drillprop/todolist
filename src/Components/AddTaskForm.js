@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-
+import PropTypes from "prop-types";
 class AddTaskForm extends Component {
   taskTitleRef = React.createRef();
   taskDescRef = React.createRef();
   taskEstTime = React.createRef();
+  static propTypes = {
+    addTask: PropTypes.func
+  };
 
   createTask = ev => {
     ev.preventDefault();

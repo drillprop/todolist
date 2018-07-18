@@ -1,14 +1,10 @@
 import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
-import PropTypes from "prop-types";
 import ShowTasks from "./ShowTasks";
 
 class Dashboard extends Component {
   state = {
     tasks: {}
-  };
-  static propTypes = {
-    addTask: PropTypes.func
   };
   addTask = task => {
     const tasks = { ...this.state.tasks };
