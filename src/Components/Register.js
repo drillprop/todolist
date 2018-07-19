@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { fireBaseApp } from "../base";
-class Login extends Component {
+import { Redirect } from "react-router-dom";
+
+class Register extends Component {
   state = {
     logged: false
   };
   userNameRef = React.createRef();
   userPasswordRef = React.createRef();
 
-  loginMethod = e => {
+  register = e => {
     e.preventDefault();
     const email = this.userNameRef.current.value;
     const password = this.userPasswordRef.current.value;
-
     fireBaseApp
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => console.log("created account for " + email))
       .then(() => this.setState({ logged: true }))
       .catch(err => console.log(err));
   };
@@ -25,7 +26,7 @@ class Login extends Component {
       return <Redirect to="/dashboard" />;
     }
     return (
-      <form onSubmit={this.loginMethod}>
+      <form onSubmit={this.register}>
         <label htmlFor="username">Username:</label>
         <input
           id="username"
@@ -42,10 +43,10 @@ class Login extends Component {
           autoComplete="current-password"
           ref={this.userPasswordRef}
         />
-        <button type="submit"> Log In</button>
+        <button type="submit">Register</button>
       </form>
     );
   }
 }
 
-export default Login;
+export default Register;

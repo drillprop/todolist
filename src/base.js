@@ -10,9 +10,7 @@ console.log(base);
 
 // authentication
 
-const auth = fireBaseApp.auth();
-
 // exports
 
-export { fireBaseApp, auth };
+export { fireBaseApp };
 export default base;

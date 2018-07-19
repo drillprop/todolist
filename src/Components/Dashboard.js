@@ -2,7 +2,7 @@ import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
-import base, { auth } from "../base";
+import base, { fireBaseApp } from "../base";
 
 class Dashboard extends Component {
   state = {
@@ -16,7 +16,8 @@ class Dashboard extends Component {
   }
 
   logOut = () => {
-    auth
+    fireBaseApp
+      .auth()
       .signOut()
       .then(() => this.setState({ logged: false }))
       .catch(err => console.log(err));
@@ -37,7 +38,7 @@ class Dashboard extends Component {
     this.setState({ tasks });
   };
   checkifLogged = () => {
-    auth.onAuthStateChanged(user => {
+    fireBaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ logged: true });
       } else {
@@ -50,7 +51,7 @@ class Dashboard extends Component {
     return (
       <Fragment>
         <h1>Witaj nieznajomy...</h1>
-        {auth.currentUser ? (
+        {fireBaseApp.auth().currentUser ? (
           <div>
             <button onClick={this.logOut}>Log Out</button>
             <AddTaskForm addTask={this.addTask} />
@@ -64,6 +65,10 @@ class Dashboard extends Component {
           <div>
             <Link to={"/login"}>
               <button>Please Login</button>
+            </Link>
+            <p>Or</p>
+            <Link to="/register">
+              <button>Register</button>
             </Link>
           </div>
         )}
