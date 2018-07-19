@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fireBaseApp } from "../base";
+import base, { fireBaseApp } from "../base";
 import { Redirect } from "react-router-dom";
 
 class Register extends Component {
@@ -16,8 +16,17 @@ class Register extends Component {
     fireBaseApp
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => console.log("created account for " + email))
+      .then(data => data.user)
+      .then(user => user.uid)
+      .then(userId =>
+        base.post(`users/${userId}`, {
+          data: {
+            email
+          }
+        })
+      )
       .then(() => this.setState({ logged: true }))
+      .then(o => console.log(o))
       .catch(err => console.log(err));
   };
 

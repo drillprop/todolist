@@ -9,10 +9,13 @@ class Dashboard extends Component {
     tasks: {}
   };
   componentDidMount() {
-    this.ref = base.syncState("dashboard/tasks", {
-      context: this,
-      state: "tasks"
-    });
+    if (fireBaseApp.auth().currentUser) {
+      const userId = fireBaseApp.auth().currentUser.uid;
+      this.ref = base.syncState(`users/${userId}/tasks`, {
+        context: this,
+        state: "tasks"
+      });
+    }
   }
 
   logOut = () => {
@@ -37,15 +40,6 @@ class Dashboard extends Component {
     tasks[task] = null;
     this.setState({ tasks });
   };
-  checkifLogged = () => {
-    fireBaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ logged: true });
-      } else {
-        this.setState({ logged: false });
-      }
-    });
-  };
 
   render() {
     return (
@@ -53,6 +47,7 @@ class Dashboard extends Component {
         <h1>Witaj nieznajomy...</h1>
         {fireBaseApp.auth().currentUser ? (
           <div>
+            {console.log(fireBaseApp.auth().currentUser.uid)}
             <button onClick={this.logOut}>Log Out</button>
             <AddTaskForm addTask={this.addTask} />
             <ShowTasks
