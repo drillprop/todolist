@@ -9,12 +9,13 @@ class ShowTasks extends Component {
       taskDesc: PropTypes.string,
       taskEstTime: PropTypes.string
     }),
+    doneTask: PropTypes.func,
     editTask: PropTypes.func,
     removeTask: PropTypes.func
   };
 
   render() {
-    const { tasks, editTask, removeTask } = this.props;
+    const { tasks, editTask, removeTask, doneTask } = this.props;
     const tasksKeys = Object.keys(tasks);
     return (
       <div>
@@ -26,6 +27,7 @@ class ShowTasks extends Component {
               details={tasks[task]}
               editTask={editTask}
               removeTask={removeTask}
+              doneTask={doneTask}
             />
           );
         })}

@@ -16,7 +16,8 @@ class AddTaskForm extends Component {
     const task = {
       taskTitle,
       taskDesc,
-      taskEstTime
+      taskEstTime,
+      isTaskDone: false
     };
 
     this.props.addTask(task);

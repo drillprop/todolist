@@ -40,6 +40,11 @@ class Dashboard extends Component {
     tasks[task] = null;
     this.setState({ tasks });
   };
+  doneTask = task => {
+    const tasks = { ...this.state.tasks };
+    tasks[task].isTaskDone = !tasks[task].isTaskDone;
+    this.setState({ tasks });
+  };
 
   render() {
     return (
@@ -54,6 +59,7 @@ class Dashboard extends Component {
               tasks={this.state.tasks}
               editTask={this.editTask}
               removeTask={this.removeTask}
+              doneTask={this.doneTask}
             />
           </div>
         ) : (
