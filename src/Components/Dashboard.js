@@ -52,7 +52,6 @@ class Dashboard extends Component {
         <h1>Witaj nieznajomy...</h1>
         {fireBaseApp.auth().currentUser ? (
           <div>
-            {console.log(fireBaseApp.auth().currentUser.uid)}
             <button onClick={this.logOut}>Log Out</button>
             <AddTaskForm addTask={this.addTask} />
             <ShowTasks

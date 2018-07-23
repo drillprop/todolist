@@ -4,7 +4,8 @@ import EditTaskForm from "./EditTaskForm";
 class Task extends Component {
   taskCheckBox = React.createRef();
   state = {
-    editable: false
+    editable: false,
+    isMounted: false
   };
   static propTypes = {
     details: PropTypes.shape({
@@ -19,8 +20,10 @@ class Task extends Component {
   };
 
   componentDidMount = () => {
-    if (this.props.details.isTaskDone) {
-      this.taskCheckBox.current.checked = true;
+    if (this.props.details) {
+      if (this.props.details.isTaskDone) {
+        this.taskCheckBox.current.checked = true;
+      }
     }
   };
 

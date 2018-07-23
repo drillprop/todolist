@@ -6,7 +6,6 @@ import config from "./keys";
 const fireBaseApp = firebase.initializeApp(config);
 
 const base = Rebase.createClass(fireBaseApp.database());
-console.log(base);
 
 // authentication
 
