@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
 class Task extends Component {
-  taskCheckBox = React.createRef();
   state = {
-    editable: false,
-    isMounted: false
+    editable: false
   };
   static propTypes = {
     details: PropTypes.shape({
@@ -15,16 +13,9 @@ class Task extends Component {
       isTaskDone: PropTypes.bool
     }),
     editTask: PropTypes.func,
+    doneTask: PropTypes.func,
     removeTask: PropTypes.func,
     keyName: PropTypes.string
-  };
-
-  componentDidMount = () => {
-    if (this.props.details) {
-      if (this.props.details.isTaskDone) {
-        this.taskCheckBox.current.checked = true;
-      }
-    }
   };
 
   makeTaskEditable = () => {
@@ -33,12 +24,9 @@ class Task extends Component {
     });
   };
 
-  makeTaskDone = () => {
-    this.props.doneTask(this.props.keyName);
-  };
-
   render() {
-    const { taskTitle, taskDesc, taskEstTime } = this.props.details;
+    const { taskTitle, taskDesc, taskEstTime, isTaskDone } = this.props.details;
+    const { doneTask, removeTask, keyName, editTask } = this.props;
     if (!this.state.editable) {
       return (
         <div draggable className="task">
@@ -46,21 +34,19 @@ class Task extends Component {
           <h4>{taskDesc}</h4>
           <h4>{taskEstTime}</h4>
           <button onClick={this.makeTaskEditable}>Edit Task</button>
-          <button onClick={() => this.props.removeTask(this.props.keyName)}>
-            Remove item
-          </button>
+          <button onClick={() => removeTask(keyName)}>Remove item</button>
           <input
-            ref={this.taskCheckBox}
             type="checkbox"
-            onChange={this.makeTaskDone}
+            checked={isTaskDone}
+            onChange={() => doneTask(keyName)}
           />
         </div>
       );
     }
     return (
       <EditTaskForm
-        editTask={this.props.editTask}
-        keyName={this.props.keyName}
+        editTask={editTask}
+        keyName={keyName}
         makeTaskEditable={this.makeTaskEditable}
         taskTitle={taskTitle}
         taskDesc={taskDesc}
