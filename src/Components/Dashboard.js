@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
 import base, { fireBaseApp } from "../base";
+import Navigation from "./Navigation";
 
 class Dashboard extends Component {
   state = {
@@ -49,6 +50,7 @@ class Dashboard extends Component {
   render() {
     return (
       <Fragment>
+        <Navigation />
         <h1>Witaj nieznajomy...</h1>
         {fireBaseApp.auth().currentUser ? (
           <div>
