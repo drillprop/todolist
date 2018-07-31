@@ -6,16 +6,23 @@ import { injectGlobal } from "styled-components";
 
 injectGlobal`
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900');
+:root {
+  --main-bg-color: #303A44;
+  --main-color: #F9FCFF;
+  --accent-color:#CA3C25; 
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
   box-sizing: content-box;
+  color: var(--main-color)
 }
 a {
   text-decoration: none;
   color:inherit;
 }
 body {
-  background: #ececec;
+  background: var(--main-bg-color);
 }
 li {
   list-style:none;
@@ -28,9 +35,8 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-        <Header />
         <Link to="/login">
-          <button>Click Here to login</button>
+          <Header />
         </Link>
       </div>
     );
