@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { fireBaseApp } from "../base";
+import { Form, Label } from "./Elements/Forms";
+import Navigation from "./Navigation";
 class Login extends Component {
   state = {
     logged: false
@@ -25,25 +27,28 @@ class Login extends Component {
       return <Redirect to="/dashboard" />;
     }
     return (
-      <form onSubmit={this.loginMethod}>
-        <label htmlFor="username">Username:</label>
-        <input
-          id="username"
-          type="text"
-          placeholder="Username"
-          autoComplete="Username"
-          ref={this.userNameRef}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          ref={this.userPasswordRef}
-        />
-        <button type="submit"> Log In</button>
-      </form>
+      <React.Fragment>
+        <Navigation />
+        <Form onSubmit={this.loginMethod}>
+          <Label htmlFor="username">Username:</Label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            autoComplete="Username"
+            ref={this.userNameRef}
+          />
+          <Label htmlFor="password">Password:</Label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autoComplete="current-password"
+            ref={this.userPasswordRef}
+          />
+          <button type="submit"> Log In</button>
+        </Form>
+      </React.Fragment>
     );
   }
 }
