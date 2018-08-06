@@ -3,10 +3,13 @@ import { Redirect } from "react-router-dom";
 import { fireBaseApp } from "../base";
 import { Form, Label } from "./Elements/Forms";
 import Navigation from "./Navigation";
+import { SubmitButton } from "./Elements/Button";
+
 class Login extends Component {
   state = {
     logged: false
   };
+
   userNameRef = React.createRef();
   userPasswordRef = React.createRef();
 
@@ -30,6 +33,11 @@ class Login extends Component {
       <React.Fragment>
         <Navigation />
         <Form onSubmit={this.loginMethod}>
+          <h3>
+            Log into your <span>account</span>
+            {this.props.someprops}
+          </h3>
+
           <Label htmlFor="username">Username:</Label>
           <input
             id="username"
@@ -46,7 +54,7 @@ class Login extends Component {
             autoComplete="current-password"
             ref={this.userPasswordRef}
           />
-          <button type="submit"> Log In</button>
+          <SubmitButton type="submit"> Log In</SubmitButton>
         </Form>
       </React.Fragment>
     );

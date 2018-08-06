@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import base, { fireBaseApp } from "../base";
 import { Redirect } from "react-router-dom";
 import Navigation from "./Navigation";
+import { Label } from "./Elements/Forms";
 
 class Register extends Component {
   state = {
@@ -39,7 +40,7 @@ class Register extends Component {
       <React.Fragment>
         <Navigation />
         <form onSubmit={this.register}>
-          <label htmlFor="username">Username:</label>
+          <Label htmlFor="username">Username:</Label>
           <input
             id="username"
             type="text"
@@ -47,7 +48,7 @@ class Register extends Component {
             autoComplete="Username"
             ref={this.userNameRef}
           />
-          <label htmlFor="password">Password:</label>
+          <Label htmlFor="password">Password:</Label>
           <input
             id="password"
             type="password"
