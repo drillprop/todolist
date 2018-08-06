@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Navigation from "./Navigation";
-import { Link } from "react-router-dom";
 import { injectGlobal } from "styled-components";
-import { Button } from "./Elements/Button";
 
 injectGlobal`
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900');
