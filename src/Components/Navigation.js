@@ -3,17 +3,33 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Navbar = styled.nav`
-  color: #303a44;
+  color: var(--main-color);
   display: flex;
   justify-content: space-between;
   height: 70px;
   text-transform: uppercase;
 `;
 const SmallLogo = styled.div`
-  flex-basis: 30px;
   align-self: center;
   h3 {
     margin-left: 50px;
+    font-size: 15px;
+  }
+  span {
+    text-align: center;
+    display: block;
+    color: var(--accent-color);
+    letter-spacing: 6px;
+  }
+  :hover {
+    h3 {
+      transition: all 300ms 500ms;
+      color: var(--accent-color);
+    }
+    span {
+      transition: all 300ms 500ms;
+      color: var(--main-color);
+    }
   }
 `;
 
@@ -27,6 +43,8 @@ const Nav = styled.ul`
 
 const ListedItem = styled.li`
   margin-right: 50px;
+  font-weight: 700;
+  letter-spacing: 2px;
 `;
 
 const Navigation = () => {
@@ -34,7 +52,9 @@ const Navigation = () => {
     <Navbar>
       <SmallLogo>
         <Link to="/">
-          <h3>Home</h3>
+          <h3>
+            To Do <span id="list">List</span>
+          </h3>
         </Link>
       </SmallLogo>
       <Nav>
