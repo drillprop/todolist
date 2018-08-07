@@ -9,9 +9,16 @@ const StyledHeader = styled.header`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
 const HeaderButton = Button.extend`
   width: 100%;
   padding: 10px 0;
+  font-size: 13px;
+  @media (max-width: 600px) {
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 10px;
+  }
 `;
 
 const StyledH1 = styled.h1`
@@ -20,6 +27,10 @@ const StyledH1 = styled.h1`
   text-transform: uppercase;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 23px;
+  }
   #list {
     color: var(--accent-color);
   }
@@ -37,6 +48,10 @@ const Letters = styled.span`
   display: block;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 13px;
+  }
   ::before {
     margin-right: 20px;
     content: "";
@@ -47,6 +62,9 @@ const Letters = styled.span`
     position: relative;
     top: -8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
   :last-of-type {
     margin-bottom: 20px;
