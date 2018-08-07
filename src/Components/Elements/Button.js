@@ -22,4 +22,6 @@ export const SubmitButton = styled.button`
   display: block;
   border: none;
   background: var(--accent-color);
+  margin: 0 auto;
+  padding: 5px 15px;
 `;
