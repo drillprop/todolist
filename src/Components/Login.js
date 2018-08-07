@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { fireBaseApp } from "../base";
-import { Form, Label } from "./Elements/Forms";
+import { Form, Label, StyledInput } from "./Elements/Forms";
 import Navigation from "./Navigation";
 import { SubmitButton } from "./Elements/Button";
 
@@ -39,7 +39,7 @@ class Login extends Component {
           </h3>
 
           <Label htmlFor="username">Username:</Label>
-          <input
+          <StyledInput
             id="username"
             type="text"
             placeholder="Username"
@@ -47,7 +47,7 @@ class Login extends Component {
             ref={this.userNameRef}
           />
           <Label htmlFor="password">Password:</Label>
-          <input
+          <StyledInput
             id="password"
             type="password"
             placeholder="Password"
