@@ -26,7 +26,6 @@ body {
 li {
   list-style:none;
 }
-
 `;
 
 class App extends Component {
