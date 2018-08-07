@@ -1,6 +1,36 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
+import styled from "styled-components";
+
+const TaskContainer = styled.div`
+  background: var(--main-color);
+  color: black;
+  width: 400px;
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+`;
+const TaskData = styled.section`
+  margin-left: 15px;
+`;
+
+const TaskTitle = styled.h3`
+  color: var(--accent-color);
+  font-size: 12px;
+`;
+
+const TaskDescription = styled.p`
+  color: var(--main-bg-color);
+  font-size: 10px;
+`;
+
+const TaskControls = styled.section`
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+`;
 class Task extends Component {
   state = {
     editable: false
@@ -29,18 +59,22 @@ class Task extends Component {
     const { doneTask, removeTask, keyName, editTask } = this.props;
     if (!this.state.editable) {
       return (
-        <div draggable className="task">
-          <h4>{taskTitle}</h4>
-          <h4>{taskDesc}</h4>
-          <h4>{taskEstTime}</h4>
-          <button onClick={this.makeTaskEditable}>Edit Task</button>
-          <button onClick={() => removeTask(keyName)}>Remove item</button>
-          <input
-            type="checkbox"
-            checked={isTaskDone}
-            onChange={() => doneTask(keyName)}
-          />
-        </div>
+        <TaskContainer>
+          <TaskData>
+            <TaskTitle>{taskTitle}</TaskTitle>
+            <TaskDescription>{taskDesc}</TaskDescription>
+            <TaskDescription>{taskEstTime}</TaskDescription>
+          </TaskData>
+          <TaskControls>
+            <button onClick={this.makeTaskEditable}>Edit Task</button>
+            <button onClick={() => removeTask(keyName)}>Remove item</button>
+            <input
+              type="checkbox"
+              checked={isTaskDone}
+              onChange={() => doneTask(keyName)}
+            />
+          </TaskControls>
+        </TaskContainer>
       );
     }
     return (
