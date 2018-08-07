@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import LogoSmall from "./LogoSmall";
 
 const Navbar = styled.nav`
   color: var(--main-color);
@@ -8,29 +9,6 @@ const Navbar = styled.nav`
   justify-content: space-between;
   height: 70px;
   text-transform: uppercase;
-`;
-const SmallLogo = styled.div`
-  align-self: center;
-  h3 {
-    margin-left: 50px;
-    font-size: 15px;
-  }
-  span {
-    text-align: center;
-    display: block;
-    color: var(--accent-color);
-    letter-spacing: 6px;
-  }
-  :hover {
-    h3 {
-      transition: all 300ms 500ms;
-      color: var(--accent-color);
-    }
-    span {
-      transition: all 300ms 500ms;
-      color: var(--main-color);
-    }
-  }
 `;
 
 const Nav = styled.ul`
@@ -50,13 +28,7 @@ const ListedItem = styled.li`
 const Navigation = () => {
   return (
     <Navbar>
-      <SmallLogo>
-        <Link to="/dashboard">
-          <h3>
-            To Do <span id="list">List</span>
-          </h3>
-        </Link>
-      </SmallLogo>
+      <LogoSmall />
       <Nav>
         <Link to="/login">
           <ListedItem>Login</ListedItem>
