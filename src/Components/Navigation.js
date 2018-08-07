@@ -51,7 +51,7 @@ const Navigation = () => {
   return (
     <Navbar>
       <SmallLogo>
-        <Link to="/">
+        <Link to="/dashboard">
           <h3>
             To Do <span id="list">List</span>
           </h3>

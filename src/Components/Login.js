@@ -44,7 +44,7 @@ class Login extends Component {
             type="text"
             placeholder="Username"
             autoComplete="Username"
-            ref={this.userNameRef}
+            innerRef={this.userNameRef}
           />
           <Label htmlFor="password">Password:</Label>
           <StyledInput
@@ -52,7 +52,9 @@ class Login extends Component {
             type="password"
             placeholder="Password"
             autoComplete="current-password"
-            ref={this.userPasswordRef}
+            innerRef={this.userPasswordRef}
+            // refs dont work with styled-components!
+            // Use innerRef instead!
           />
           <SubmitButton type="submit"> Log In</SubmitButton>
         </Form>
