@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
 import styled from "styled-components";
-import { SubmitButton } from "./Elements/Button";
 import Switch from "./Switch";
+import EditIcon from "./Svg/EditIcon";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -33,14 +33,16 @@ const TaskDescription = styled.p`
 `;
 
 const TaskControls = styled.section`
-  margin-right: 15px;
   display: flex;
 `;
 
 const DeleteX = styled.span`
   align-self: flex-start;
   font-family: arial;
-  font-size: 20px;
+  margin-left: 6px;
+  margin-right: 8px;
+  line-height: 0.95;
+  font-size: 25px;
   font-weight: 900;
   cursor: pointer;
   color: var(--accent-color);
@@ -87,9 +89,7 @@ class Task extends Component {
               doneTask={doneTask}
               keyName={keyName}
             />
-            <SubmitButton onClick={this.makeTaskEditable}>
-              Edit Task
-            </SubmitButton>
+            <EditIcon onClick={this.makeTaskEditable} />
             <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
           </TaskControls>
         </TaskContainer>
