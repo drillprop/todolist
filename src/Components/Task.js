@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
 import styled from "styled-components";
 import { SubmitButton } from "./Elements/Button";
+import Switch from "./Switch";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -12,7 +13,8 @@ const TaskContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  position: relative;
+  border-radius: 3px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.25);
 `;
 const TaskData = styled.section`
   margin-left: 15px;
@@ -22,6 +24,7 @@ const TaskTitle = styled.h3`
   color: var(--accent-color);
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: 700;
 `;
 
 const TaskDescription = styled.p`
@@ -36,12 +39,14 @@ const TaskControls = styled.section`
 `;
 
 const DeleteX = styled.span`
+  align-self: flex-end;
   font-family: arial;
   font-size: 20px;
   font-weight: 900;
   cursor: pointer;
   color: var(--accent-color);
 `;
+
 class Task extends Component {
   state = {
     editable: false
@@ -81,10 +86,11 @@ class Task extends Component {
             <SubmitButton onClick={this.makeTaskEditable}>
               Edit Task
             </SubmitButton>
-            <input
+            <Switch
               type="checkbox"
               checked={isTaskDone}
-              onChange={() => doneTask(keyName)}
+              doneTask={doneTask}
+              keyName={keyName}
             />
           </TaskControls>
         </TaskContainer>
