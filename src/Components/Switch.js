@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+const SwitchContainer = styled.div`
+  align-self: center;
+`;
+
 const StyledSwitch = styled.input`
   position: relative;
+  margin:0 10px;
   width: 80px;
   height: 40px;
   appearance: none;
@@ -37,13 +42,13 @@ class Switch extends Component {
   render() {
     const { isTaskDone, keyName, doneTask } = this.props;
     return (
-      <div>
+      <SwitchContainer>
         <StyledSwitch
           checked={isTaskDone}
           type="checkbox"
           onChange={() => doneTask(keyName)}
         />
-      </div>
+      </SwitchContainer>
     );
   }
 }

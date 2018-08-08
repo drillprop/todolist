@@ -9,7 +9,7 @@ const TaskContainer = styled.div`
   background: var(--main-color);
   color: black;
   width: 400px;
-  height: 66px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -35,11 +35,10 @@ const TaskDescription = styled.p`
 const TaskControls = styled.section`
   margin-right: 15px;
   display: flex;
-  flex-direction: column;
 `;
 
 const DeleteX = styled.span`
-  align-self: flex-end;
+  align-self: flex-start;
   font-family: arial;
   font-size: 20px;
   font-weight: 900;
@@ -82,16 +81,16 @@ class Task extends Component {
             <TaskDescription>{taskEstTime}</TaskDescription>
           </TaskData>
           <TaskControls>
-            <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
-            <SubmitButton onClick={this.makeTaskEditable}>
-              Edit Task
-            </SubmitButton>
             <Switch
               type="checkbox"
               isTaskDone={isTaskDone}
               doneTask={doneTask}
               keyName={keyName}
             />
+            <SubmitButton onClick={this.makeTaskEditable}>
+              Edit Task
+            </SubmitButton>
+            <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
           </TaskControls>
         </TaskContainer>
       );
