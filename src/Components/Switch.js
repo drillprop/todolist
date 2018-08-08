@@ -7,17 +7,17 @@ const SwitchContainer = styled.div`
 
 const StyledSwitch = styled.input`
   position: relative;
-  margin:0 10px;
+  margin:0 35px 0 auto;
   width: 80px;
   height: 40px;
   appearance: none;
-  background: grey;
+  background: var(--main-bg-color);
   outline: none;
   border-radius: 20px;
   transition:all 500ms;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
   :checked  {
-    background: blue;
+    background: var(--main-bg-color);
   }
   ::before {
     content: "";
@@ -28,7 +28,8 @@ const StyledSwitch = styled.input`
     height: 40px;
     border-radius: 100%;
     transform: scale(1.5);
-    background-color: black;
+    background-color: var(--accent-color);
+    box-shadow:2px 3px 5px rgba(0,0,0, .25);
     transition: all .5s;
   }
 
