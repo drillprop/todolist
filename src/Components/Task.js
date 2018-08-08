@@ -34,11 +34,14 @@ const TaskDescription = styled.p`
 
 const TaskControls = styled.section`
   display: flex;
+  span {
+    cursor: pointer;
+  }
 `;
 
 const DeleteX = styled.span`
   align-self: flex-start;
-  font-family: arial;
+  font-family: Arial;
   margin-left: 6px;
   margin-right: 8px;
   line-height: 0.95;
@@ -89,7 +92,9 @@ class Task extends Component {
               doneTask={doneTask}
               keyName={keyName}
             />
-            <EditIcon onClick={this.makeTaskEditable} />
+            <span onClick={this.makeTaskEditable} cursor="pointer">
+              <EditIcon />
+            </span>
             <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
           </TaskControls>
         </TaskContainer>
