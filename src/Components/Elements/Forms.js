@@ -17,6 +17,7 @@ export const Form = styled.form`
   align-items: center;
   & h3 {
     margin-top: 0;
+    font-weight: 700;
     color: var(--main-bg-color);
     & span {
       color: var(--accent-color);
@@ -27,9 +28,17 @@ export const Form = styled.form`
 export const Label = styled.label`
   color: var(--main-bg-color);
   margin: 0;
+  font-weight: 500;
 `;
 
 export const StyledInput = styled.input`
   margin: 15px 0 25px 0;
+  outline: none;
+  border: none;
+  padding-bottom: 4px;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 2px solid var(--main-bg-color);
+  border-radius: 1px;
   width: 60%;
 `;
