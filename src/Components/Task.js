@@ -88,7 +88,7 @@ class Task extends Component {
             </SubmitButton>
             <Switch
               type="checkbox"
-              checked={isTaskDone}
+              isTaskDone={isTaskDone}
               doneTask={doneTask}
               keyName={keyName}
             />

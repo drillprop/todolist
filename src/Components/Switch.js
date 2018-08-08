@@ -35,11 +35,14 @@ const StyledSwitch = styled.input`
 
 class Switch extends Component {
   render() {
-    const { keyName, doneTask } = this.props;
-
+    const { isTaskDone, keyName, doneTask } = this.props;
     return (
       <div>
-        <StyledSwitch type="checkbox" onChange={() => doneTask(keyName)} />
+        <StyledSwitch
+          checked={isTaskDone}
+          type="checkbox"
+          onChange={() => doneTask(keyName)}
+        />
       </div>
     );
   }
