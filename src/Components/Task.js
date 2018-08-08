@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
 import styled from "styled-components";
+import { SubmitButton } from "./Elements/Button";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -11,6 +12,7 @@ const TaskContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  position: relative;
 `;
 const TaskData = styled.section`
   margin-left: 15px;
@@ -18,6 +20,7 @@ const TaskData = styled.section`
 
 const TaskTitle = styled.h3`
   color: var(--accent-color);
+  text-transform: uppercase;
   font-size: 12px;
 `;
 
@@ -30,6 +33,14 @@ const TaskControls = styled.section`
   margin-right: 15px;
   display: flex;
   flex-direction: column;
+`;
+
+const DeleteX = styled.span`
+  font-family: arial;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  color: var(--accent-color);
 `;
 class Task extends Component {
   state = {
@@ -66,8 +77,10 @@ class Task extends Component {
             <TaskDescription>{taskEstTime}</TaskDescription>
           </TaskData>
           <TaskControls>
-            <button onClick={this.makeTaskEditable}>Edit Task</button>
-            <button onClick={() => removeTask(keyName)}>Remove item</button>
+            <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
+            <SubmitButton onClick={this.makeTaskEditable}>
+              Edit Task
+            </SubmitButton>
             <input
               type="checkbox"
               checked={isTaskDone}
