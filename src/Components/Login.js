@@ -4,6 +4,7 @@ import { fireBaseApp } from "../base";
 import { Form, Label, StyledInput } from "./Elements/Forms";
 import Navigation from "./Navigation";
 import { SubmitButton } from "./Elements/Button";
+import firebase from "firebase/app";
 
 class Login extends Component {
   state = {
@@ -20,7 +21,10 @@ class Login extends Component {
 
     fireBaseApp
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        return fireBaseApp.auth().signInWithEmailAndPassword(email, password);
+      })
       .then(() => this.setState({ logged: true }))
       .catch(err => console.log(err));
   };
