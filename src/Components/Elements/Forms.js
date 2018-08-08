@@ -16,11 +16,15 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   & h3 {
+    margin: 0;
     margin-top: 0;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 25px;
     color: var(--main-bg-color);
     & span {
+      display: block;
       color: var(--accent-color);
+      margin-bottom: 30px;
     }
   }
 `;
@@ -28,7 +32,7 @@ export const Form = styled.form`
 export const Label = styled.label`
   color: var(--main-bg-color);
   margin: 0;
-  font-weight: 500;
+  font-weight: 700;
 `;
 
 export const StyledInput = styled.input`
@@ -38,7 +42,7 @@ export const StyledInput = styled.input`
   padding-bottom: 4px;
   background-color: transparent;
   box-shadow: none;
-  border-bottom: 2px solid var(--main-bg-color);
+  border-bottom: 1px solid var(--main-bg-color);
   border-radius: 1px;
   width: 60%;
 `;
