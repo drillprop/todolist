@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import base, { fireBaseApp } from "../base";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { Label, Form, StyledInput } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
@@ -45,7 +45,13 @@ class Register extends Component {
             Create new
             <span>account</span>
           </h3>
-          <h4>...or sign in to existing one</h4>
+          <h4>
+            ...or{" "}
+            <span>
+              <Link to="/login">sign in</Link>
+            </span>{" "}
+            to existing one
+          </h4>
           <Label htmlFor="username">Username:</Label>
           <StyledInput
             id="username"
