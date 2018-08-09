@@ -8,8 +8,8 @@ export const Form = styled.form`
   border-radius: 5px;
   box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.25);
   text-align: center;
-  width: 300px;
-  height: 350px;
+  width: 310px;
+  height: 420px;
   background: var(--main-color);
   display: flex;
   flex-direction: column;
@@ -28,10 +28,10 @@ export const Form = styled.form`
   }
   & h4 {
     color: var(--main-bg-color);
-    margin: 20px 0;
+    margin: 8px 0 50px;
     font-size: 12px;
     font-weight: 700;
-    & span {
+    & a {
       color: var(--accent-color);
       display: inline;
     }

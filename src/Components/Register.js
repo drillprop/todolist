@@ -46,11 +46,7 @@ class Register extends Component {
             <span>account</span>
           </h3>
           <h4>
-            ...or{" "}
-            <span>
-              <Link to="/login">sign in</Link>
-            </span>{" "}
-            to existing one
+            ...or <Link to="/login">sign in</Link> to existing one
           </h4>
           <Label htmlFor="username">Username:</Label>
           <StyledInput

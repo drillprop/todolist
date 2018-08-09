@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { fireBaseApp } from "../base";
 import { Form, Label, StyledInput } from "./Elements/Forms";
 import Navigation from "./Navigation";
@@ -38,10 +38,11 @@ class Login extends Component {
         <Navigation />
         <Form onSubmit={this.loginMethod}>
           <h3>
-            Log into your <span>account</span>
-            {this.props.someprops}
+            Log in to your <span>account</span>
           </h3>
-
+          <h4>
+            ...or <Link to="/register">create new one</Link>
+          </h4>
           <Label htmlFor="username">Username:</Label>
           <StyledInput
             id="username"
