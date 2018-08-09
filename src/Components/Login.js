@@ -5,6 +5,22 @@ import { Form, Label, StyledInput } from "./Elements/Forms";
 import Navigation from "./Navigation";
 import { SubmitButton } from "./Elements/Button";
 import firebase from "firebase/app";
+import { CSSTransition } from "react-transition-group";
+import { injectGlobal } from "styled-components";
+
+injectGlobal`
+.fade-appear {
+  position:absolute;
+  transform:translate(-50%, -1000%);
+  opacity:0;
+}
+.fade-appear.fade-appear-active{
+  position:absolute;
+  transform:translate(-50%, -50%);
+  opacity:1;
+  transition: all 300ms;
+   }
+  `;
 
 class Login extends Component {
   state = {
@@ -36,33 +52,35 @@ class Login extends Component {
     return (
       <React.Fragment>
         <Navigation />
-        <Form onSubmit={this.loginMethod}>
-          <h3>
-            Log in to your <span>account</span>
-          </h3>
-          <h4>
-            ...or <Link to="/register">create new one</Link>
-          </h4>
-          <Label htmlFor="username">Username:</Label>
-          <StyledInput
-            id="username"
-            type="text"
-            placeholder="Username"
-            autoComplete="Username"
-            innerRef={this.userNameRef}
-          />
-          <Label htmlFor="password">Password:</Label>
-          <StyledInput
-            id="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            innerRef={this.userPasswordRef}
-            // refs dont work with styled-components!
-            // Use innerRef instead!
-          />
-          <SubmitButton type="submit"> Log In</SubmitButton>
-        </Form>
+        <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
+          <Form onSubmit={this.loginMethod}>
+            <h3>
+              Log in to your <span>account</span>
+            </h3>
+            <h4>
+              ...or <Link to="/register">create new one</Link>
+            </h4>
+            <Label htmlFor="username">Username:</Label>
+            <StyledInput
+              id="username"
+              type="text"
+              placeholder="Username"
+              autoComplete="Username"
+              innerRef={this.userNameRef}
+            />
+            <Label htmlFor="password">Password:</Label>
+            <StyledInput
+              id="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="current-password"
+              innerRef={this.userPasswordRef}
+              // refs dont work with styled-components!
+              // Use innerRef instead!
+            />
+            <SubmitButton type="submit"> Log In</SubmitButton>
+          </Form>
+        </CSSTransition>
       </React.Fragment>
     );
   }

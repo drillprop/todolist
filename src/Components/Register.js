@@ -4,6 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import { Label, Form, StyledInput } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
+import { CSSTransition } from "react-transition-group";
 
 class Register extends Component {
   state = {
@@ -40,32 +41,34 @@ class Register extends Component {
     return (
       <React.Fragment>
         <Navigation />
-        <Form onSubmit={this.register}>
-          <h3>
-            Create new
-            <span>account</span>
-          </h3>
-          <h4>
-            ...or <Link to="/login">sign in</Link> to existing one
-          </h4>
-          <Label htmlFor="username">Username:</Label>
-          <StyledInput
-            id="username"
-            type="text"
-            placeholder="Username"
-            autoComplete="Username"
-            ref={this.userNameRef}
-          />
-          <Label htmlFor="password">Password:</Label>
-          <StyledInput
-            id="password"
-            type="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            ref={this.userPasswordRef}
-          />
-          <SubmitButton type="submit">Register</SubmitButton>
-        </Form>
+        <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
+          <Form onSubmit={this.register}>
+            <h3>
+              Create new
+              <span>account</span>
+            </h3>
+            <h4>
+              ...or <Link to="/login">sign in</Link> to existing one
+            </h4>
+            <Label htmlFor="username">Username:</Label>
+            <StyledInput
+              id="username"
+              type="text"
+              placeholder="Username"
+              autoComplete="Username"
+              ref={this.userNameRef}
+            />
+            <Label htmlFor="password">Password:</Label>
+            <StyledInput
+              id="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="current-password"
+              ref={this.userPasswordRef}
+            />
+            <SubmitButton type="submit">Register</SubmitButton>
+          </Form>
+        </CSSTransition>
       </React.Fragment>
     );
   }
