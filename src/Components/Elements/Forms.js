@@ -24,7 +24,16 @@ export const Form = styled.form`
     & span {
       display: block;
       color: var(--accent-color);
-      margin-bottom: 30px;
+    }
+  }
+  & h4 {
+    color: var(--main-bg-color);
+    margin: 20px 0;
+    font-size: 12px;
+    font-weight: 700;
+    & span {
+      color: var(--accent-color);
+      display: inline;
     }
   }
 `;
