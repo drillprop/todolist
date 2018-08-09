@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import base, { fireBaseApp } from "../base";
 import { Redirect, Link } from "react-router-dom";
-import Navigation from "./Navigation";
 import { Label, Form, StyledInput } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
 import { CSSTransition } from "react-transition-group";
@@ -40,7 +39,6 @@ class Register extends Component {
     }
     return (
       <React.Fragment>
-        <Navigation />
         <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
           <Form onSubmit={this.register}>
             <h3>

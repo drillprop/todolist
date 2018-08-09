@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { fireBaseApp } from "../base";
 import { Form, Label, StyledInput } from "./Elements/Forms";
-import Navigation from "./Navigation";
 import { SubmitButton } from "./Elements/Button";
 import firebase from "firebase/app";
 import { CSSTransition } from "react-transition-group";
@@ -51,7 +50,6 @@ class Login extends Component {
     }
     return (
       <React.Fragment>
-        <Navigation />
         <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
           <Form onSubmit={this.loginMethod}>
             <h3>
