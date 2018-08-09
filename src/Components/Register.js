@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import base, { fireBaseApp } from "../base";
 import { Redirect } from "react-router-dom";
 import Navigation from "./Navigation";
-import { Label } from "./Elements/Forms";
+import { Label, Form, StyledInput } from "./Elements/Forms";
+import { SubmitButton } from "./Elements/Button";
 
 class Register extends Component {
   state = {
@@ -39,9 +40,14 @@ class Register extends Component {
     return (
       <React.Fragment>
         <Navigation />
-        <form onSubmit={this.register}>
+        <Form onSubmit={this.register}>
+          <h3>
+            Create new
+            <span>account</span>
+          </h3>
+          <h4>...or sign in to existing one</h4>
           <Label htmlFor="username">Username:</Label>
-          <input
+          <StyledInput
             id="username"
             type="text"
             placeholder="Username"
@@ -49,15 +55,15 @@ class Register extends Component {
             ref={this.userNameRef}
           />
           <Label htmlFor="password">Password:</Label>
-          <input
+          <StyledInput
             id="password"
             type="password"
             placeholder="Password"
             autoComplete="current-password"
             ref={this.userPasswordRef}
           />
-          <button type="submit">Register</button>
-        </form>
+          <SubmitButton type="submit">Register</SubmitButton>
+        </Form>
       </React.Fragment>
     );
   }
