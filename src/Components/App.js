@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import Navigation from "./Navigation";
 import { injectGlobal } from "styled-components";
 
 injectGlobal`

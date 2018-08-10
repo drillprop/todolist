@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   position: absolute;
+  z-index: 5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -45,6 +46,7 @@ export const Label = styled.label`
 `;
 
 export const StyledInput = styled.input`
+  color: var(--main-bg-color);
   margin: 15px 0 25px 0;
   outline: none;
   border: none;
@@ -52,6 +54,19 @@ export const StyledInput = styled.input`
   background-color: transparent;
   box-shadow: none;
   border-bottom: 1px solid var(--main-bg-color);
+  border-radius: 1px;
+  width: 60%;
+`;
+
+export const StyledTextarea = styled.textarea`
+  color: var(--main-bg-color);
+  margin: 15px 0 25px 0;
+  outline: none;
+  border: none;
+  padding-bottom: 4px;
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid var(--main-bg-color);
   border-radius: 1px;
   width: 60%;
 `;
