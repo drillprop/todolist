@@ -12,13 +12,22 @@ injectGlobal`
   position:absolute;
   transform:translate(-50%, -1000%);
   opacity:0;
+  animation:slideIn 700ms;
 }
 .fade-appear.fade-appear-active{
   position:absolute;
   transform:translate(-50%, -50%);
   opacity:1;
-  transition: all 300ms;
    }
+
+   @keyframes slideIn {
+     0% {transform:translate(-50%, -1000%);
+     opacity:0}
+     80% {transform: translate(-50%, -45%) scale(0.5) }
+     100% {
+       transform:translate(-50%, -50%) scale(1);
+     opacity:1;}
+   } 
   `;
 
 class Login extends Component {
@@ -50,7 +59,7 @@ class Login extends Component {
     }
     return (
       <React.Fragment>
-        <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
+        <CSSTransition in={true} appear={true} timeout={700} classNames="fade">
           <Form onSubmit={this.loginMethod}>
             <h3>
               Log in to your <span>account</span>

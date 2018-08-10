@@ -39,7 +39,7 @@ class Register extends Component {
     }
     return (
       <React.Fragment>
-        <CSSTransition in={true} appear={true} timeout={300} classNames="fade">
+        <CSSTransition in={true} appear={true} timeout={700} classNames="fade">
           <Form onSubmit={this.register}>
             <h3>
               Create new
