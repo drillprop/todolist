@@ -54,7 +54,7 @@ class Register extends Component {
               type="text"
               placeholder="Username"
               autoComplete="Username"
-              ref={this.userNameRef}
+              innerRef={this.userNameRef}
             />
             <Label htmlFor="password">Password:</Label>
             <StyledInput
@@ -62,7 +62,7 @@ class Register extends Component {
               type="password"
               placeholder="Password"
               autoComplete="current-password"
-              ref={this.userPasswordRef}
+              innerRef={this.userPasswordRef}
             />
             <SubmitButton type="submit">Register</SubmitButton>
           </Form>
