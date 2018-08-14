@@ -2,20 +2,43 @@ import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
 import base, { fireBaseApp } from "../base";
-import Login from "./Login";
+
+// fireBaseApp.auth().onAuthStateChanged(user => {
+//   if (user) {
+//           const userId = fireBaseApp.auth().currentUser.uid;
+// this.ref = base.syncState(`users/${userId}/tasks`, {
+//   context: this,
+//   state: "tasks"
+// });
+//   } else {
+//     return null;
+//   }
+// });
 
 class Dashboard extends Component {
   state = {
     tasks: {}
   };
   componentDidMount() {
-    if (fireBaseApp.auth().currentUser) {
-      const userId = fireBaseApp.auth().currentUser.uid;
-      this.ref = base.syncState(`users/${userId}/tasks`, {
-        context: this,
-        state: "tasks"
-      });
-    }
+    fireBaseApp.auth().onAuthStateChanged(user => {
+      if (user) {
+        const userId = fireBaseApp.auth().currentUser.uid;
+        this.ref = base.syncState(`users/${userId}/tasks`, {
+          context: this,
+          state: "tasks"
+        });
+      } else {
+        return null;
+      }
+    });
+    // WITHOUT ERROR IN CONSOLE BUT DIDNT WORK
+    // if (fireBaseApp.auth().currentUser) {
+    //   const userId = fireBaseApp.auth().currentUser.uid;
+    //   this.ref = base.syncState(`users/${userId}/tasks`, {
+    //     context: this,
+    //     state: "tasks"
+    //   });
+    // }
   }
 
   addTask = task => {
@@ -52,11 +75,7 @@ class Dashboard extends Component {
               doneTask={this.doneTask}
             />
           </div>
-        ) : (
-          <Login>
-            <h1>You are not logged in!</h1>
-          </Login>
-        )}
+        ) : null}
       </Fragment>
     );
   }
