@@ -1,4 +1,5 @@
 import React from "react";
+import { fireBaseApp } from "../base";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoSmall from "./LogoSmall";
@@ -25,20 +26,43 @@ const ListedItem = styled.li`
   letter-spacing: 2px;
 `;
 
-const Navigation = () => {
-  return (
-    <Navbar>
-      <LogoSmall />
-      <Nav>
-        <Link to="/login">
-          <ListedItem>Login</ListedItem>
-        </Link>
-        <Link to="/register">
-          <ListedItem>Register</ListedItem>
-        </Link>
-      </Nav>
-    </Navbar>
-  );
-};
+class Navigation extends React.Component {
+  state = {
+    loggedIn: false
+  };
+
+  componentDidMount() {
+    if (fireBaseApp.auth().currentUser) {
+      this.setState({ loggedIn: true });
+    } else {
+      this.setState({ loggedIn: false });
+    }
+  }
+  logOut = () => {
+    fireBaseApp
+      .auth()
+      .signOut()
+      .then(() => this.setState({ loggedIn: false }));
+  };
+  render() {
+    return (
+      <Navbar>
+        <LogoSmall />
+        <Nav>
+          <Link to="/login">
+            <ListedItem onClick={this.logOut}>
+              {fireBaseApp.auth().currentUser ? "Log Out" : "Login"}
+            </ListedItem>
+          </Link>
+          <Link to="/register">
+            <ListedItem>
+              {fireBaseApp.auth().currentUser ? null : "Register"}
+            </ListedItem>
+          </Link>
+        </Nav>
+      </Navbar>
+    );
+  }
+}
 
 export default Navigation;

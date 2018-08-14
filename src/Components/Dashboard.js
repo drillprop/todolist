@@ -19,13 +19,6 @@ class Dashboard extends Component {
     }
   }
 
-  logOut = () => {
-    fireBaseApp
-      .auth()
-      .signOut()
-      .then(() => this.setState({ logged: false }))
-      .catch(err => console.log(err));
-  };
   addTask = task => {
     const tasks = { ...this.state.tasks };
     tasks[`task${Date.now()}`] = task;
@@ -52,7 +45,6 @@ class Dashboard extends Component {
       <Fragment>
         {fireBaseApp.auth().currentUser ? (
           <div>
-            <SubmitButton onClick={this.logOut}>Log Out</SubmitButton>
             <AddTaskForm addTask={this.addTask} />
             <ShowTasks
               tasks={this.state.tasks}
