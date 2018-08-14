@@ -2,7 +2,6 @@ import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
 import base, { fireBaseApp } from "../base";
-import { SubmitButton } from "./Elements/Button";
 import Login from "./Login";
 
 class Dashboard extends Component {
