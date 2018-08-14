@@ -59,6 +59,7 @@ class Login extends Component {
     }
     return (
       <React.Fragment>
+        {this.props.children}
         <CSSTransition in={true} appear={true} timeout={700} classNames="fade">
           <Form onSubmit={this.loginMethod}>
             <h3>

@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from "react";
-import { Link } from "react-router-dom";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
 import base, { fireBaseApp } from "../base";
+import { SubmitButton } from "./Elements/Button";
+import Login from "./Login";
 
 class Dashboard extends Component {
   state = {
@@ -49,10 +50,9 @@ class Dashboard extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Witaj nieznajomy...</h1>
         {fireBaseApp.auth().currentUser ? (
           <div>
-            <button onClick={this.logOut}>Log Out</button>
+            <SubmitButton onClick={this.logOut}>Log Out</SubmitButton>
             <AddTaskForm addTask={this.addTask} />
             <ShowTasks
               tasks={this.state.tasks}
@@ -62,15 +62,9 @@ class Dashboard extends Component {
             />
           </div>
         ) : (
-          <div>
-            <Link to={"/login"}>
-              <button>Please Login</button>
-            </Link>
-            <p>Or</p>
-            <Link to="/register">
-              <button>Register</button>
-            </Link>
-          </div>
+          <Login>
+            <h1>You are not logged in!</h1>
+          </Login>
         )}
       </Fragment>
     );
