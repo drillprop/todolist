@@ -51,14 +51,16 @@ class Navigation extends React.Component {
         <Nav>
           <Link to="/login">
             <ListedItem onClick={this.logOut}>
-              {fireBaseApp.auth().currentUser ? "Log Out" : "Login"}
+              {fireBaseApp.auth().currentUser ? "Log Out" : "Sign in"}
             </ListedItem>
           </Link>
-          <Link to="/register">
-            <ListedItem>
-              {fireBaseApp.auth().currentUser ? null : "Register"}
-            </ListedItem>
-          </Link>
+          {fireBaseApp.auth().currentUser ? (
+            `Logged as ${fireBaseApp.auth().currentUser.email}`
+          ) : (
+            <Link to="/register">
+              <ListedItem>Sign up</ListedItem>
+            </Link>
+          )}
         </Nav>
       </Navbar>
     );
