@@ -45,10 +45,7 @@ class Login extends Component {
 
     fireBaseApp
       .auth()
-      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      .then(() => {
-        return fireBaseApp.auth().signInWithEmailAndPassword(email, password);
-      })
+      .signInWithEmailAndPassword(email, password)
       .then(() => this.setState({ logged: true }))
       .catch(err => console.log(err));
   };
