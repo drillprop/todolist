@@ -2,9 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Form, StyledInput, Label, StyledTextarea } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
+import styled from "styled-components";
 
 const EditModal = Form.extend`
   box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.8);
+`;
+
+const EditTask = styled.div`
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
 `;
 
 class EditTaskForm extends Component {
@@ -38,10 +49,18 @@ class EditTaskForm extends Component {
     makeTaskEditable();
   };
 
+  hideModal = e => {
+    if (e.target === e.currentTarget) {
+      const { makeTaskEditable } = this.props;
+      console.log("hiding");
+      makeTaskEditable();
+    }
+  };
+
   render() {
     const { taskTitle, taskDesc, taskEstTime } = this.props;
     return (
-      <div className="task">
+      <EditTask onClick={this.hideModal}>
         <EditModal onSubmit={this.updateTask}>
           <Label htmlFor="task-title"> Task title </Label>
           <StyledInput
@@ -72,7 +91,7 @@ class EditTaskForm extends Component {
           <br />
           <SubmitButton type="submit">Submit</SubmitButton>
         </EditModal>
-      </div>
+      </EditTask>
     );
   }
 }
