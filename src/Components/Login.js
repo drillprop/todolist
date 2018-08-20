@@ -3,7 +3,6 @@ import { Redirect, Link } from "react-router-dom";
 import { fireBaseApp } from "../base";
 import { Form, Label, StyledInput } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
-import firebase from "firebase/app";
 import { CSSTransition } from "react-transition-group";
 import { injectGlobal } from "styled-components";
 
