@@ -2,6 +2,17 @@ import React, { Fragment, Component } from "react";
 import AddTaskForm from "./AddTaskForm";
 import ShowTasks from "./ShowTasks";
 import base, { fireBaseApp } from "../base";
+import styled from "styled-components";
+import { Redirect } from "react-router-dom";
+
+const DashboardContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: 890px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 // fireBaseApp.auth().onAuthStateChanged(user => {
 //   if (user) {
@@ -66,7 +77,7 @@ class Dashboard extends Component {
     return (
       <Fragment>
         {fireBaseApp.auth().currentUser ? (
-          <div>
+          <DashboardContainer>
             <AddTaskForm addTask={this.addTask} />
             <ShowTasks
               tasks={this.state.tasks}
@@ -74,8 +85,10 @@ class Dashboard extends Component {
               removeTask={this.removeTask}
               doneTask={this.doneTask}
             />
-          </div>
-        ) : null}
+          </DashboardContainer>
+        ) : (
+          <Redirect to="/login" />
+        )}
       </Fragment>
     );
   }
