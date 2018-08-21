@@ -37,6 +37,12 @@ class Login extends Component {
   userNameRef = React.createRef();
   userPasswordRef = React.createRef();
 
+  componentWillMount = () => {
+    fireBaseApp
+      .auth()
+      .onAuthStateChanged(usr => this.setState({ logged: usr }));
+  };
+
   loginMethod = e => {
     e.preventDefault();
     const email = this.userNameRef.current.value;
