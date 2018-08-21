@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 const TasksContainer = styled.div`
   align-self: center;
+  width: 500px;
+  max-height: 420px;
+  overflow: auto;
 `;
 
 class ShowTasks extends Component {

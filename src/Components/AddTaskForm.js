@@ -7,7 +7,7 @@ const FormTask = Form.extend`
   position: static;
   transform: translate(0, 0);
   margin-right: 50px;
-  width: 400px;
+  width: 500px;
   input {
     width: 30%;
   }

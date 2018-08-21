@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Icon = styled.svg`
-  fill: var(--accent-color);
+  fill: ${props =>
+    props.isTaskDone ? "var(--main-bg-color)" : "var(--accent-color)"};
   width: 17px;
 `;
 
-const EditIcon = () => {
+const EditIcon = props => {
   return (
     <Icon
+      isTaskDone={props.isTaskDone}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"

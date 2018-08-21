@@ -35,6 +35,7 @@ const StyledSwitch = styled.input`
 
    :checked::before {
       left: 40px;
+      background-color: var(--main-bg-color);
     }
   }
 `;

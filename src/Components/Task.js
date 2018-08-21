@@ -7,12 +7,12 @@ import EditIcon from "./Svg/EditIcon";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
-  color: black;
   width: 400px;
   height: 70px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
   border-radius: 3px;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.25);
 `;
@@ -21,7 +21,10 @@ const TaskData = styled.section`
 `;
 
 const TaskTitle = styled.h3`
-  color: var(--accent-color);
+  color: ${props =>
+    props.isTaskDone
+      ? "var(--main-bg-color); opacity:0.7"
+      : "var(--accent-color)"};
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
@@ -48,7 +51,10 @@ const DeleteX = styled.span`
   font-size: 25px;
   font-weight: 900;
   cursor: pointer;
-  color: var(--accent-color);
+  color: ${props =>
+    props.isTaskDone
+      ? "var(--main-bg-color); opacity:0.7"
+      : "var(--accent-color)"};
 `;
 
 class Task extends Component {
@@ -81,7 +87,7 @@ class Task extends Component {
       return (
         <TaskContainer>
           <TaskData>
-            <TaskTitle>{taskTitle}</TaskTitle>
+            <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
             <TaskDescription>{taskDesc}</TaskDescription>
             <TaskDescription>{taskEstTime}</TaskDescription>
           </TaskData>
@@ -93,9 +99,14 @@ class Task extends Component {
               keyName={keyName}
             />
             <span onClick={this.makeTaskEditable} cursor="pointer">
-              <EditIcon />
+              <EditIcon isTaskDone={isTaskDone} />
             </span>
-            <DeleteX onClick={() => removeTask(keyName)}>&times;</DeleteX>
+            <DeleteX
+              isTaskDone={isTaskDone}
+              onClick={() => removeTask(keyName)}
+            >
+              &times;
+            </DeleteX>
           </TaskControls>
         </TaskContainer>
       );
