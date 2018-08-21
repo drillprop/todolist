@@ -7,6 +7,7 @@ import styled from "styled-components";
 const FormTask = Form.extend`
   position: static;
   transform: translate(0, 0);
+  width: 60%;
 `;
 
 class AddTaskForm extends Component {
@@ -37,7 +38,7 @@ class AddTaskForm extends Component {
       <FormTask onSubmit={this.createTask}>
         <Label htmlFor="task-title"> Task title </Label>
         <StyledInput
-          ref={this.taskTitleRef}
+          innerRef={this.taskTitleRef}
           id="task-title"
           type="text"
           placeholder="Task"
@@ -46,7 +47,7 @@ class AddTaskForm extends Component {
         <br />
         <Label htmlFor="task-description">Task description(optional)</Label>
         <StyledTextarea
-          ref={this.taskDescRef}
+          innerRef={this.taskDescRef}
           id="task-description"
           type="text"
           placeholder="Description"
@@ -56,7 +57,7 @@ class AddTaskForm extends Component {
         <br />
         <Label htmlFor="est-time">Estimated Time(optional)</Label>
         <StyledInput
-          ref={this.taskEstTime}
+          innerRef={this.taskEstTime}
           id="est-time"
           type="number"
           placeholder="Estimated Time"
