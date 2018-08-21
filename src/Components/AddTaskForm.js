@@ -7,6 +7,7 @@ const FormTask = Form.extend`
   position: static;
   transform: translate(0, 0);
   margin-right: 50px;
+  justify-content: flex-start;
   width: 500px;
   input {
     width: 30%;
@@ -15,6 +16,25 @@ const FormTask = Form.extend`
     width: 30%;
     height: 40px;
   }
+  span {
+    display: inline;
+  }
+  h3 {
+    align-self: flex-start;
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  h3 span {
+    display: inline;
+  }
+`;
+
+const AddTaskInput = StyledInput.extend`
+  display: inline;
+`;
+
+const AddTaskButton = SubmitButton.extend`
+  display: inline;
 `;
 
 class AddTaskForm extends Component {
@@ -43,15 +63,18 @@ class AddTaskForm extends Component {
   render() {
     return (
       <FormTask onSubmit={this.createTask}>
-        <Label htmlFor="task-title">Task title</Label>
-        <StyledInput
+        <h3>
+          Add a <span>Task</span>
+        </h3>
+        {/* <Label htmlFor="task-title">Task title</Label> */}
+        <AddTaskInput
           innerRef={this.taskTitleRef}
           id="task-title"
           type="text"
           placeholder="Task"
           required
         />
-        <br />
+        {/* <br />
         <Label htmlFor="task-description">Task description(optional)</Label>
         <StyledTextarea
           innerRef={this.taskDescRef}
@@ -69,8 +92,8 @@ class AddTaskForm extends Component {
           type="number"
           placeholder="Estimated Time"
         />
-        <br />
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <br /> */}
+        <AddTaskButton type="submit">Submit</AddTaskButton>
       </FormTask>
     );
   }
