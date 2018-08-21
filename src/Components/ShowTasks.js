@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Task from "./Task";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const TasksContainer = styled.div`
+  align-self: center;
+`;
 
 class ShowTasks extends Component {
   static propTypes = {
@@ -18,7 +23,7 @@ class ShowTasks extends Component {
     const { tasks, editTask, removeTask, doneTask } = this.props;
     const tasksKeys = Object.keys(tasks);
     return (
-      <div>
+      <TasksContainer>
         {tasksKeys.map(task => {
           return (
             <Task
@@ -31,7 +36,7 @@ class ShowTasks extends Component {
             />
           );
         })}
-      </div>
+      </TasksContainer>
     );
   }
 }

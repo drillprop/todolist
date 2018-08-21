@@ -6,9 +6,9 @@ import styled from "styled-components";
 import { Redirect } from "react-router-dom";
 
 const DashboardContainer = styled.div`
-  margin-top: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-top: 50px;
   @media (max-width: 890px) {
     flex-direction: column;
     align-items: center;

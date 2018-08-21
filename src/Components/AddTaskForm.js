@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Form, StyledInput, StyledTextarea, Label } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
-import styled from "styled-components";
 
 const FormTask = Form.extend`
   position: static;
   transform: translate(0, 0);
-  width: 60%;
+  margin-right: 50px;
+  width: 400px;
+  input {
+    width: 30%;
+  }
+  textarea {
+    width: 30%;
+    height: 40px;
+  }
 `;
 
 class AddTaskForm extends Component {
@@ -36,7 +43,7 @@ class AddTaskForm extends Component {
   render() {
     return (
       <FormTask onSubmit={this.createTask}>
-        <Label htmlFor="task-title"> Task title </Label>
+        <Label htmlFor="task-title">Task title</Label>
         <StyledInput
           innerRef={this.taskTitleRef}
           id="task-title"
