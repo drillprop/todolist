@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Form, StyledInput, StyledTextarea, Label } from "./Elements/Forms";
+import { SubmitButton } from "./Elements/Button";
+import styled from "styled-components";
+
+const FormTask = Form.extend`
+  position: static;
+  transform: translate(0, 0);
+`;
+
 class AddTaskForm extends Component {
   taskTitleRef = React.createRef();
   taskDescRef = React.createRef();
@@ -25,9 +34,9 @@ class AddTaskForm extends Component {
   };
   render() {
     return (
-      <form id="task-form" onSubmit={this.createTask}>
-        <label htmlFor="task-title"> Task title </label>
-        <input
+      <FormTask onSubmit={this.createTask}>
+        <Label htmlFor="task-title"> Task title </Label>
+        <StyledInput
           ref={this.taskTitleRef}
           id="task-title"
           type="text"
@@ -35,8 +44,8 @@ class AddTaskForm extends Component {
           required
         />
         <br />
-        <label htmlFor="task-description">Task description(optional)</label>
-        <textarea
+        <Label htmlFor="task-description">Task description(optional)</Label>
+        <StyledTextarea
           ref={this.taskDescRef}
           id="task-description"
           type="text"
@@ -45,16 +54,16 @@ class AddTaskForm extends Component {
           cols="20"
         />
         <br />
-        <label htmlFor="est-time">Estimated Time(optional)</label>
-        <input
+        <Label htmlFor="est-time">Estimated Time(optional)</Label>
+        <StyledInput
           ref={this.taskEstTime}
           id="est-time"
           type="number"
           placeholder="Estimated Time"
         />
         <br />
-        <button type="submit">Submit</button>
-      </form>
+        <SubmitButton type="submit">Submit</SubmitButton>
+      </FormTask>
     );
   }
 }
