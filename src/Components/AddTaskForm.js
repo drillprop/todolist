@@ -5,25 +5,10 @@ import { SubmitButton } from "./Elements/Button";
 import styled from "styled-components";
 
 const FormTask = styled.form`
-  background: var(--main-color);
-  transform: translate(0, 0);
-  margin-right: 50px;
-  justify-content: flex-start;
-  width: 500px;
-  border-radius: 3px;
-  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.25);
-  height: 420px;
-  textarea {
-    width: 30%;
-    height: 40px;
-  }
-  span {
-    display: inline;
-  }
   h3 {
-    color: var(--main-bg-color);
+    color: var(--main-color);
     font-size: 50px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-weight: 900;
     align-self: flex-start;
     margin-top: 50px;
@@ -37,8 +22,10 @@ const FormTask = styled.form`
 
 const AddTaskInput = StyledInput.extend`
   display: inline-block;
-  width: 40%;
+  width: 70%;
   margin-left: 70px;
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
 `;
 
 const AddTaskButton = SubmitButton.extend`
