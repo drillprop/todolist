@@ -11,6 +11,7 @@ const TaskContainer = styled.div`
   width: 400px;
   height: 70px;
   display: flex;
+  order: ${props => (props.isTaskDone ? 0 : -1)};
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 20px;
