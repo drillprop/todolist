@@ -7,10 +7,10 @@ import { Redirect } from "react-router-dom";
 
 const DashboardContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 50px;
   @media (max-width: 890px) {
-    flex-direction: column;
     align-items: center;
   }
 `;
