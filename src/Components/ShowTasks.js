@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 const TasksContainer = styled.div`
   align-self: center;
+  display: flex;
+  flex-direction: column;
   width: 500px;
   max-height: 420px;
   overflow: auto;
