@@ -7,6 +7,7 @@ import EditIcon from "./Svg/EditIcon";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
+  opacity: ${props => (props.isTaskDone ? 0.5 : 1)};
   width: 400px;
   height: 70px;
   display: flex;
@@ -85,7 +86,7 @@ class Task extends Component {
     const { doneTask, removeTask, keyName, editTask } = this.props;
     if (!this.state.editable) {
       return (
-        <TaskContainer>
+        <TaskContainer isTaskDone={isTaskDone}>
           <TaskData>
             <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
             <TaskDescription>{taskDesc}</TaskDescription>
