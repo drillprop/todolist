@@ -4,17 +4,19 @@ import { Form, StyledInput, StyledTextarea, Label } from "./Elements/Forms";
 import { SubmitButton } from "./Elements/Button";
 import styled from "styled-components";
 
-const FormTask = styled.form`
-  h3 {
-    color: var(--main-color);
-    font-size: 50px;
-    text-transform: lowercase;
-    font-weight: 900;
-    align-self: flex-start;
-    margin-top: 50px;
-    margin-left: 50px;
-  }
-  h3 span {
+const StyledForm = styled.form`
+  margin: 0 auto;
+`;
+
+const StyledH3 = styled.h3`
+  text-align: center;
+  color: var(--main-color);
+  font-size: 50px;
+  text-transform: lowercase;
+  font-weight: 900;
+  align-self: flex-start;
+  margin: 30px auto;
+  span {
     color: var(--accent-color);
     display: inline;
   }
@@ -22,10 +24,16 @@ const FormTask = styled.form`
 
 const AddTaskInput = StyledInput.extend`
   display: inline-block;
-  width: 70%;
-  margin-left: 70px;
+  width: 300px;
+  margin: 25px auto;
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color);
+  @media (max-width: 500px) {
+    width: 200px;
+  }
+  @media (max-width: 300px) {
+    width: 150px;
+  }
 `;
 
 const AddTaskButton = SubmitButton.extend`
@@ -57,10 +65,10 @@ class AddTaskForm extends Component {
   };
   render() {
     return (
-      <FormTask onSubmit={this.createTask}>
-        <h3>
+      <StyledForm onSubmit={this.createTask}>
+        <StyledH3>
           Add a <span>Task</span>
-        </h3>
+        </StyledH3>
         {/* <Label htmlFor="task-title">Task title</Label> */}
         <AddTaskInput
           innerRef={this.taskTitleRef}
@@ -89,7 +97,7 @@ class AddTaskForm extends Component {
         />
         <br /> */}
         <AddTaskButton type="submit">Submit</AddTaskButton>
-      </FormTask>
+      </StyledForm>
     );
   }
 }
