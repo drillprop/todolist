@@ -59,13 +59,13 @@ class Navigation extends React.Component {
                 : "Sign in"}
             </ListedItem>
           </Link>
-          {loggedIn && fireBaseApp.auth().currentUser ? (
-            `Logged as ${fireBaseApp.auth().currentUser.email}`
-          ) : (
-            <Link to="/register">
-              <ListedItem>Sign up</ListedItem>
-            </Link>
-          )}
+          <ListedItem>
+            {loggedIn && fireBaseApp.auth().currentUser ? (
+              `Logged as ${fireBaseApp.auth().currentUser.email}`
+            ) : (
+              <Link to="/register">Sign up</Link>
+            )}
+          </ListedItem>
         </Nav>
       </Navbar>
     );
