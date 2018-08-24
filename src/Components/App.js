@@ -9,6 +9,10 @@ injectGlobal`
   --main-color: #F9FCFF;
   --accent-color:#CA3C25; 
 }
+html, body {
+  margin:0;
+  padding:0;
+}
 * {
   font-family: 'Montserrat', sans-serif;
   box-sizing: content-box;
