@@ -3,6 +3,7 @@ import { fireBaseApp } from "../base";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoSmall from "./LogoSmall";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = styled.nav`
   color: var(--main-color);
@@ -46,11 +47,13 @@ class Navigation extends React.Component {
       .signOut()
       .then(() => this.setState({ loggedIn: false }));
   };
+
   render() {
     const { loggedIn } = this.state;
     return (
       <Navbar>
         <LogoSmall />
+        <HamburgerMenu />
         <Nav>
           <Link to="/login">
             <ListedItem onClick={this.logOut}>
