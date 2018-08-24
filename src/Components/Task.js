@@ -27,6 +27,7 @@ const TaskTitle = styled.h3`
     props.isTaskDone
       ? "var(--main-bg-color); opacity:0.7"
       : "var(--accent-color)"};
+  text-decoration-line: ${props => (props.isTaskDone ? "line-through" : null)};
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
