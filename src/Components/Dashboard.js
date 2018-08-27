@@ -34,17 +34,15 @@ class Dashboard extends Component {
     this.state = {
       tasks: {}
     };
-    fireBaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-        const userId = fireBaseApp.auth().currentUser.uid;
-        this.ref = base.syncState(`users/${userId}/tasks`, {
-          context: this,
-          state: "tasks"
-        });
-      } else {
-        return null;
-      }
-    });
+    if (fireBaseApp.auth().currentUser) {
+      const userId = fireBaseApp.auth().currentUser.uid;
+      this.ref = base.syncState(`users/${userId}/tasks`, {
+        context: this,
+        state: "tasks"
+      });
+    } else {
+      return null;
+    }
   }
 
   addTask = task => {
