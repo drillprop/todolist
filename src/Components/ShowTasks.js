@@ -8,7 +8,6 @@ const TasksContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
-  max-height: 420px;
   overflow: auto;
 `;
 
