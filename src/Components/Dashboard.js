@@ -28,10 +28,12 @@ const DashboardContainer = styled.div`
 // });
 
 class Dashboard extends Component {
-  state = {
-    tasks: {}
-  };
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tasks: {}
+    };
     fireBaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         const userId = fireBaseApp.auth().currentUser.uid;
@@ -43,14 +45,6 @@ class Dashboard extends Component {
         return null;
       }
     });
-    // WITHOUT ERROR IN CONSOLE BUT DIDNT WORK
-    // if (fireBaseApp.auth().currentUser) {
-    //   const userId = fireBaseApp.auth().currentUser.uid;
-    //   this.ref = base.syncState(`users/${userId}/tasks`, {
-    //     context: this,
-    //     state: "tasks"
-    //   });
-    // }
   }
 
   addTask = task => {
