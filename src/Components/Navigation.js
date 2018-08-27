@@ -32,15 +32,6 @@ class Navigation extends React.Component {
     loggedIn: false
   };
 
-  componentDidMount() {
-    fireBaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ loggedIn: true });
-      } else {
-        this.setState({ loggedIn: false });
-      }
-    });
-  }
   logOut = () => {
     fireBaseApp
       .auth()
@@ -49,7 +40,6 @@ class Navigation extends React.Component {
   };
 
   render() {
-    const { loggedIn } = this.state;
     return (
       <Navbar>
         <LogoSmall />
@@ -57,13 +47,11 @@ class Navigation extends React.Component {
         <Nav>
           <Link to="/login">
             <ListedItem onClick={this.logOut}>
-              {loggedIn && fireBaseApp.auth().currentUser
-                ? "Log Out"
-                : "Sign in"}
+              {fireBaseApp.auth().currentUser ? "Log Out" : "Sign in"}
             </ListedItem>
           </Link>
           <ListedItem>
-            {loggedIn && fireBaseApp.auth().currentUser ? (
+            {fireBaseApp.auth().currentUser ? (
               `Logged as ${fireBaseApp.auth().currentUser.email}`
             ) : (
               <Link to="/register">Sign up</Link>
