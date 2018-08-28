@@ -101,7 +101,11 @@ class Task extends Component {
               doneTask={doneTask}
               keyName={keyName}
             />
-            <span onClick={this.makeTaskEditable} cursor="pointer">
+            <span
+              onClick={this.makeTaskEditable}
+              cursor="pointer"
+              style={{ height: "20px" }}
+            >
               <EditIcon isTaskDone={isTaskDone} />
             </span>
             <DeleteX
@@ -114,7 +118,9 @@ class Task extends Component {
             >
               &times;
             </DeleteX>
-            <Infoicon isTaskDone={isTaskDone} />
+            <span cursor="pointer" style={{ height: "20px" }}>
+              <Infoicon isTaskDone={isTaskDone} />
+            </span>
           </TaskControls>
         </TaskContainer>
       );
