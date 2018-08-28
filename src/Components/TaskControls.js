@@ -6,9 +6,6 @@ import InfoIcon from "./Svg/InfoIcon";
 
 const ControlsContainer = styled.section`
   display: flex;
-  span {
-    cursor: pointer;
-  }
 `;
 
 const DeleteX = styled.span`
@@ -38,8 +35,7 @@ const TaskControls = props => {
       />
       <span
         onClick={makeTaskEditable}
-        cursor="pointer"
-        style={{ height: "20px" }}
+        style={{ height: "20px", cursor: "pointer" }}
       >
         <EditIcon isTaskDone={isTaskDone} />
       </span>
@@ -53,7 +49,7 @@ const TaskControls = props => {
       >
         &times;
       </DeleteX>
-      <span cursor="pointer" style={{ height: "20px" }}>
+      <span cursor="pointer" style={{ height: "20px", cursor: "pointer" }}>
         <InfoIcon isTaskDone={isTaskDone} />
       </span>
     </ControlsContainer>

@@ -3,6 +3,15 @@ import styled from "styled-components";
 
 const SwitchContainer = styled.div`
   align-self: center;
+  span {
+    color: var(--main-color);
+    position: relative;
+    bottom: 15px;
+    left: 28px;
+    font-size: 8px;
+    font-weight: 900;
+    z-index: 1;
+  }
 `;
 
 const StyledSwitch = styled.input`
@@ -31,6 +40,7 @@ const StyledSwitch = styled.input`
     background-color: var(--accent-color);
     box-shadow:2px 3px 5px rgba(0,0,0, .25);
     transition: all .5s;
+    z-index:4;
   }
 
    :checked::before {
@@ -45,6 +55,7 @@ class Switch extends Component {
     const { isTaskDone, keyName, doneTask } = this.props;
     return (
       <SwitchContainer>
+        <span>Done</span>
         <StyledSwitch
           checked={isTaskDone}
           type="checkbox"
