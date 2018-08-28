@@ -4,6 +4,7 @@ import EditTaskForm from "./EditTaskForm";
 import styled from "styled-components";
 import Switch from "./Switch";
 import EditIcon from "./Svg/EditIcon";
+import Infoicon from "./Svg/Infoicon";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -113,6 +114,7 @@ class Task extends Component {
             >
               &times;
             </DeleteX>
+            <Infoicon isTaskDone={isTaskDone} />
           </TaskControls>
         </TaskContainer>
       );
