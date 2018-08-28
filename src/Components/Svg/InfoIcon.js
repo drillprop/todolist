@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 const Icon = styled.svg`
   fill: ${props =>
-    props.isTaskDone ? "var(--main-bg-color)" : "var(--accent-color)"};
+    props.isTaskDone
+      ? "var(--main-bg-color); opacity: 0.7"
+      : "var(--accent-color); opacity: 1"};
   width: 21px;
   margin-right: 15px;
 `;

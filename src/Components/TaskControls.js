@@ -23,7 +23,7 @@ const DeleteX = styled.span`
   color: ${props =>
     props.isTaskDone
       ? "var(--main-bg-color); opacity:0.7"
-      : "var(--accent-color)"};
+      : "var(--accent-color); opacity:1"};
 `;
 
 const TaskControls = props => {
