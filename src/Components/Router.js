@@ -9,7 +9,7 @@ import Navigation from "./Navigation";
 class Router extends Component {
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <React.Fragment>
           <Navigation />
           <Switch>
