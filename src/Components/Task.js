@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
 import styled from "styled-components";
-import Switch from "./Switch";
-import EditIcon from "./Svg/EditIcon";
-import Infoicon from "./Svg/Infoicon";
+import TaskControls from "./TaskControls";
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -36,28 +34,6 @@ const TaskTitle = styled.h3`
 const TaskDescription = styled.p`
   color: var(--main-bg-color);
   font-size: 10px;
-`;
-
-const TaskControls = styled.section`
-  display: flex;
-  span {
-    cursor: pointer;
-  }
-`;
-
-const DeleteX = styled.span`
-  align-self: flex-start;
-  font-family: Arial;
-  margin-left: 6px;
-  margin-right: 8px;
-  line-height: 0.95;
-  font-size: 25px;
-  font-weight: 900;
-  cursor: pointer;
-  color: ${props =>
-    props.isTaskDone
-      ? "var(--main-bg-color); opacity:0.7"
-      : "var(--accent-color)"};
 `;
 
 class Task extends Component {
@@ -94,34 +70,14 @@ class Task extends Component {
             <TaskDescription>{taskDesc}</TaskDescription>
             <TaskDescription>{taskEstTime}</TaskDescription>
           </TaskData>
-          <TaskControls>
-            <Switch
-              type="checkbox"
-              isTaskDone={isTaskDone}
-              doneTask={doneTask}
-              keyName={keyName}
-            />
-            <span
-              onClick={this.makeTaskEditable}
-              cursor="pointer"
-              style={{ height: "20px" }}
-            >
-              <EditIcon isTaskDone={isTaskDone} />
-            </span>
-            <DeleteX
-              isTaskDone={isTaskDone}
-              onClick={() => {
-                if (window.confirm("Are u sure?")) {
-                  removeTask(keyName);
-                }
-              }}
-            >
-              &times;
-            </DeleteX>
-            <span cursor="pointer" style={{ height: "20px" }}>
-              <Infoicon isTaskDone={isTaskDone} />
-            </span>
-          </TaskControls>
+          <TaskControls
+            isTaskDone={isTaskDone}
+            removeTask={removeTask}
+            editTask={editTask}
+            doneTask={doneTask}
+            keyName={keyName}
+            makeTaskEditable={this.makeTaskEditable}
+          />
         </TaskContainer>
       );
     }
