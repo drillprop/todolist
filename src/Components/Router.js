@@ -9,11 +9,11 @@ import Navigation from "./Navigation";
 class Router extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <React.Fragment>
           <Navigation />
           <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/todolist" component={App} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/register" component={Register} />
