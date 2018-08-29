@@ -19,6 +19,9 @@ const Nav = styled.ul`
   justify-content: space-between;
   font-size: 0.8em;
   align-self: center;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const ListedItem = styled.li`
