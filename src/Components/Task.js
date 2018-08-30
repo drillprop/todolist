@@ -26,6 +26,10 @@ const TaskContainer = styled.div`
   margin-bottom: 20px;
   border-radius: 3px;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.25);
+  @media (max-width: 500px) {
+    transform: scale(0.6);
+    margin: 0;
+  }
 `;
 const TaskData = styled.section`
   margin-left: 15px;

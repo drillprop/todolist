@@ -7,8 +7,12 @@ const TasksContainer = styled.div`
   overflow-x: hidden;
   align-self: center;
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 500px;
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 class ShowTasks extends Component {
