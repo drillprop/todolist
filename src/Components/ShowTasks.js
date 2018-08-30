@@ -26,11 +26,14 @@ class ShowTasks extends Component {
   render() {
     const { tasks, editTask, removeTask, doneTask } = this.props;
     const tasksKeys = Object.keys(tasks);
+    let i = 0;
     return (
       <TasksContainer>
         {tasksKeys.map(task => {
+          i = i + 50;
           return (
             <Task
+              delay={i}
               key={task}
               keyName={task}
               details={tasks[task]}

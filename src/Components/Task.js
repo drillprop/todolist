@@ -1,8 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import EditTaskForm from "./EditTaskForm";
-import styled from "styled-components";
+import styled, { injectGlobal } from "styled-components";
 import TaskControls from "./TaskControls";
+import { CSSTransition } from "react-transition-group";
+
+injectGlobal`
+  .fadein-appear {
+    transform:translate(-1000px);
+  }
+  .fadein-appear.fadein-appear-active {
+    transform:translate(0);
+    transition: transform 900ms;
+  }
+`;
 
 const TaskContainer = styled.div`
   background: var(--main-color);
@@ -61,24 +72,34 @@ class Task extends Component {
 
   render() {
     const { taskTitle, taskDesc, taskEstTime, isTaskDone } = this.props.details;
-    const { doneTask, removeTask, keyName, editTask } = this.props;
+    const { doneTask, removeTask, keyName, editTask, delay } = this.props;
     if (!this.state.editable) {
       return (
-        <TaskContainer isTaskDone={isTaskDone}>
-          <TaskData>
-            <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
-            <TaskDescription>{taskDesc}</TaskDescription>
-            <TaskDescription>{taskEstTime}</TaskDescription>
-          </TaskData>
-          <TaskControls
+        <CSSTransition
+          in={true}
+          appear={true}
+          timeout={900 + delay}
+          classNames="fadein"
+        >
+          <TaskContainer
             isTaskDone={isTaskDone}
-            removeTask={removeTask}
-            editTask={editTask}
-            doneTask={doneTask}
-            keyName={keyName}
-            makeTaskEditable={this.makeTaskEditable}
-          />
-        </TaskContainer>
+            style={{ transitionDelay: delay + "ms" }}
+          >
+            <TaskData>
+              <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
+              <TaskDescription>{taskDesc}</TaskDescription>
+              <TaskDescription>{taskEstTime}</TaskDescription>
+            </TaskData>
+            <TaskControls
+              isTaskDone={isTaskDone}
+              removeTask={removeTask}
+              editTask={editTask}
+              doneTask={doneTask}
+              keyName={keyName}
+              makeTaskEditable={this.makeTaskEditable}
+            />
+          </TaskContainer>
+        </CSSTransition>
       );
     }
     return (
