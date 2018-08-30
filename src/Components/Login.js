@@ -31,17 +31,31 @@ injectGlobal`
 
 class Login extends Component {
   state = {
-    logged: false
+    authenticated: false,
+    currentUser: null,
+    loading: true
   };
 
   userNameRef = React.createRef();
   userPasswordRef = React.createRef();
 
-  componentWillMount = () => {
-    fireBaseApp
-      .auth()
-      .onAuthStateChanged(usr => this.setState({ logged: usr }));
-  };
+  componentWillMount() {
+    fireBaseApp.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false
+        });
+      }
+    });
+  }
 
   loginMethod = e => {
     e.preventDefault();
@@ -56,7 +70,10 @@ class Login extends Component {
   };
 
   render() {
-    if (this.state.logged) {
+    if (this.state.loading) {
+      return <h1>LOADING</h1>;
+    }
+    if (this.state.currentUser) {
       return <Redirect to="/dashboard" />;
     }
     return (
