@@ -41,9 +41,13 @@ const TaskControls = props => {
       </span>
       <DeleteX
         isTaskDone={isTaskDone}
-        onClick={() => {
+        onClick={e => {
           if (window.confirm("Are u sure?")) {
-            removeTask(keyName);
+            e.currentTarget.parentElement.parentElement.style.transform =
+              "translate(1000px)";
+            setTimeout(() => {
+              removeTask(keyName);
+            }, 700);
           }
         }}
       >
