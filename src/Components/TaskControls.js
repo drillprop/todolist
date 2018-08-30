@@ -33,12 +33,18 @@ const TaskControls = props => {
         doneTask={doneTask}
         keyName={keyName}
       />
-      <span
+      <button
+        disabled={isTaskDone && true}
         onClick={makeTaskEditable}
-        style={{ height: "20px", cursor: "pointer" }}
+        style={{
+          height: "20px",
+          border: "none",
+          background: "none",
+          cursor: "pointer"
+        }}
       >
         <EditIcon isTaskDone={isTaskDone} />
-      </span>
+      </button>
       <DeleteX
         isTaskDone={isTaskDone}
         onClick={e => {
