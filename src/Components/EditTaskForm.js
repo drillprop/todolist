@@ -5,13 +5,13 @@ import { SubmitButton } from "./Elements/Button";
 import styled from "styled-components";
 
 const EditModal = Form.extend`
-  box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 0 5000px rgba(0, 0, 0, 0.8);
 `;
 
 const EditTask = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
