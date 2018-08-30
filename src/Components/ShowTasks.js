@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const TasksContainer = styled.div`
+  overflow-x: hidden;
   align-self: center;
   display: flex;
   flex-direction: column;
   width: 500px;
-  overflow: auto;
 `;
 
 class ShowTasks extends Component {
