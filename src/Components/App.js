@@ -4,6 +4,7 @@ import { injectGlobal } from "styled-components";
 
 injectGlobal`
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900');
+
 :root {
   --main-bg-color: #303A44;
   --main-color: #F9FCFF;

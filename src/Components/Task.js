@@ -73,44 +73,42 @@ class Task extends Component {
   render() {
     const { taskTitle, taskDesc, taskEstTime, isTaskDone } = this.props.details;
     const { doneTask, removeTask, keyName, editTask, delay } = this.props;
-    if (!this.state.editable) {
-      return (
-        <CSSTransition
-          in={true}
-          appear={true}
-          timeout={900 + delay}
-          classNames="fadein"
-        >
-          <TaskContainer
-            isTaskDone={isTaskDone}
-            style={{ transitionDelay: delay + "ms" }}
-          >
-            <TaskData>
-              <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
-              <TaskDescription>{taskDesc}</TaskDescription>
-              <TaskDescription>{taskEstTime}</TaskDescription>
-            </TaskData>
-            <TaskControls
-              isTaskDone={isTaskDone}
-              removeTask={removeTask}
-              editTask={editTask}
-              doneTask={doneTask}
-              keyName={keyName}
-              makeTaskEditable={this.makeTaskEditable}
-            />
-          </TaskContainer>
-        </CSSTransition>
-      );
-    }
     return (
-      <EditTaskForm
-        editTask={editTask}
-        keyName={keyName}
-        makeTaskEditable={this.makeTaskEditable}
-        taskTitle={taskTitle}
-        taskDesc={taskDesc}
-        taskEstTime={taskEstTime}
-      />
+      <CSSTransition
+        in={true}
+        appear={true}
+        timeout={900 + delay}
+        classNames="fadein"
+      >
+        <TaskContainer
+          isTaskDone={isTaskDone}
+          style={{ transitionDelay: delay + "ms" }}
+        >
+          <TaskData>
+            <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
+            <TaskDescription>{taskDesc}</TaskDescription>
+            <TaskDescription>{taskEstTime}</TaskDescription>
+            {this.state.editable && (
+              <EditTaskForm
+                editTask={editTask}
+                keyName={keyName}
+                makeTaskEditable={this.makeTaskEditable}
+                taskTitle={taskTitle}
+                taskDesc={taskDesc}
+                taskEstTime={taskEstTime}
+              />
+            )}
+          </TaskData>
+          <TaskControls
+            isTaskDone={isTaskDone}
+            removeTask={removeTask}
+            editTask={editTask}
+            doneTask={doneTask}
+            keyName={keyName}
+            makeTaskEditable={this.makeTaskEditable}
+          />
+        </TaskContainer>
+      </CSSTransition>
     );
   }
 }
