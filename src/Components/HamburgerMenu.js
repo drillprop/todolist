@@ -24,6 +24,9 @@ const Menu = styled.section`
   position: absolute;
   top: 0;
   right: 0;
+  @media (min-width: 500px) {
+    display: none;
+  }
 `;
 const List = styled.div`
   box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.5);
@@ -69,15 +72,9 @@ class HamburgerMenu extends Component {
         {this.state.menuVisible && (
           <List visible={this.state.menuVisible}>
             <ul>
-              {userName ? (
-                <li onClick={logOut} style={{ cursor: "pointer" }}>
-                  Log Out
-                </li>
-              ) : (
-                <li>
-                  <Link to="/login">Sign In</Link>
-                </li>
-              )}
+              <Link to="/login">
+                <li onClick={logOut}>{userName ? "Log Out" : "Sign in"}</li>
+              </Link>
 
               <li>
                 {userName ? (
