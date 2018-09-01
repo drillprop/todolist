@@ -18,7 +18,6 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   box-sizing: content-box;
   color: var(--main-color);
-  transition: all .5s;
 }
 
 {/* This block is fixing ugly yellowish background in chrome */}
