@@ -50,10 +50,10 @@ const TaskControls = props => {
         onClick={e => {
           if (window.confirm("Are u sure?")) {
             e.currentTarget.parentElement.parentElement.style.transform =
-              "translate(1000px)";
+              "scale(0)";
             setTimeout(() => {
               removeTask(keyName);
-            }, 700);
+            }, 500);
           }
         }}
       >
