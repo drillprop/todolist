@@ -41,21 +41,21 @@ class Navigation extends React.Component {
       .signOut()
       .then(() => this.setState({ loggedIn: false }));
   };
-
   render() {
+    const userName = fireBaseApp.auth().currentUser;
     return (
       <Navbar>
         <LogoSmall />
-        <HamburgerMenu />
+        <HamburgerMenu userName={userName} logOut={this.logOut} />
         <Nav>
           <Link to="/login">
             <ListedItem onClick={this.logOut}>
-              {fireBaseApp.auth().currentUser ? "Log Out" : "Sign in"}
+              {userName ? "Log Out" : "Sign in"}
             </ListedItem>
           </Link>
           <ListedItem>
-            {fireBaseApp.auth().currentUser ? (
-              `Logged as ${fireBaseApp.auth().currentUser.email}`
+            {userName ? (
+              `Logged as ${userName.email}`
             ) : (
               <Link to="/register">Sign up</Link>
             )}

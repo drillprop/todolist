@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const Hamburger = styled.h3`
   font-family: Arial;
@@ -60,6 +60,7 @@ class HamburgerMenu extends Component {
   };
 
   render() {
+    const { userName, logOut } = this.props;
     return (
       <Menu>
         <Hamburger visible={this.state.menuVisible} onClick={this.makeVisible}>
@@ -68,11 +69,22 @@ class HamburgerMenu extends Component {
         {this.state.menuVisible && (
           <List visible={this.state.menuVisible}>
             <ul>
+              {userName ? (
+                <li onClick={logOut} style={{ cursor: "pointer" }}>
+                  Log Out
+                </li>
+              ) : (
+                <li>
+                  <Link to="/login">Sign In</Link>
+                </li>
+              )}
+
               <li>
-                <Link to="/login">Sign In</Link>
-              </li>
-              <li>
-                <Link to="/register"> Sign Up</Link>
+                {userName ? (
+                  `Logged as ${userName.email}`
+                ) : (
+                  <Link to="/register"> Sign Up</Link>
+                )}
               </li>
             </ul>
           </List>
