@@ -29,7 +29,7 @@ const SmallLogo = styled.div`
 const LogoSmall = () => {
   return (
     <SmallLogo>
-      <Link to="/dashboard">
+      <Link to="/">
         <h3>
           To Do <span id="list">List</span>
         </h3>
