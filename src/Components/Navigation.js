@@ -55,7 +55,7 @@ class Navigation extends React.Component {
           </Link>
           <ListedItem>
             {userName ? (
-              `Logged as ${userName.email}`
+              <Link to="/dashboard">{`Logged as ${userName.email}`}</Link>
             ) : (
               <Link to="/register">Sign up</Link>
             )}
