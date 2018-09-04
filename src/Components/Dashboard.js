@@ -44,6 +44,9 @@ class Dashboard extends Component {
       return null;
     }
   }
+  componentWillUnmount = () => {
+    base.removeBinding(this.ref);
+  };
 
   addTask = task => {
     const tasks = { ...this.state.tasks };
