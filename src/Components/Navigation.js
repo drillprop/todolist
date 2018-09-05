@@ -35,6 +35,14 @@ class Navigation extends React.Component {
     loggedIn: false
   };
 
+  componentDidMount() {
+    fireBaseApp.auth().onAuthStateChanged(loggedIn => {
+      loggedIn
+        ? this.setState({ loggedIn })
+        : this.setState({ loggedIn: null });
+    });
+  }
+
   logOut = () => {
     fireBaseApp
       .auth()
@@ -42,20 +50,20 @@ class Navigation extends React.Component {
       .then(() => this.setState({ loggedIn: false }));
   };
   render() {
-    const userName = fireBaseApp.auth().currentUser;
+    const { loggedIn } = this.state;
     return (
       <Navbar>
         <LogoSmall />
-        <HamburgerMenu userName={userName} logOut={this.logOut} />
+        <HamburgerMenu userName={loggedIn} logOut={this.logOut} />
         <Nav>
           <Link to="/login">
             <ListedItem onClick={this.logOut}>
-              {userName ? "Log Out" : "Sign in"}
+              {loggedIn ? "Log Out" : "Sign in"}
             </ListedItem>
           </Link>
           <ListedItem>
-            {userName ? (
-              <Link to="/dashboard">{`Logged as ${userName.email}`}</Link>
+            {loggedIn ? (
+              <Link to="/dashboard">{`Logged as ${loggedIn.email}`}</Link>
             ) : (
               <Link to="/register">Sign up</Link>
             )}
