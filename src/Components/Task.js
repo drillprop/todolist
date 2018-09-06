@@ -44,6 +44,7 @@ const TaskTitle = styled.h3`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
+  word-break: break-word;
 `;
 
 const TaskDescription = styled.p`
