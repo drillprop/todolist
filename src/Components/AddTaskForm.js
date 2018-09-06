@@ -75,6 +75,7 @@ class AddTaskForm extends Component {
           id="task-title"
           type="text"
           placeholder="Task"
+          maxLength={50}
           required
         />
         {/* <br />

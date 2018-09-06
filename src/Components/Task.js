@@ -42,14 +42,9 @@ const TaskTitle = styled.h3`
       : "var(--accent-color)"};
   text-decoration-line: ${props => (props.isTaskDone ? "line-through" : null)};
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   word-break: break-word;
-`;
-
-const TaskDescription = styled.p`
-  color: var(--main-bg-color);
-  font-size: 10px;
 `;
 
 class Task extends Component {
@@ -59,8 +54,6 @@ class Task extends Component {
   static propTypes = {
     details: PropTypes.shape({
       taskTitle: PropTypes.string,
-      taskDesc: PropTypes.string,
-      taskEstTime: PropTypes.string,
       isTaskDone: PropTypes.bool
     }),
     editTask: PropTypes.func,
@@ -76,7 +69,7 @@ class Task extends Component {
   };
 
   render() {
-    const { taskTitle, taskDesc, taskEstTime, isTaskDone } = this.props.details;
+    const { taskTitle, isTaskDone } = this.props.details;
     const { doneTask, removeTask, keyName, editTask, delay } = this.props;
     return (
       <CSSTransition
@@ -91,16 +84,12 @@ class Task extends Component {
         >
           <TaskData>
             <TaskTitle isTaskDone={isTaskDone}>{taskTitle}</TaskTitle>
-            <TaskDescription>{taskDesc}</TaskDescription>
-            <TaskDescription>{taskEstTime}</TaskDescription>
             {this.state.editable && (
               <EditTaskForm
                 editTask={editTask}
                 keyName={keyName}
                 makeTaskEditable={this.makeTaskEditable}
                 taskTitle={taskTitle}
-                taskDesc={taskDesc}
-                taskEstTime={taskEstTime}
               />
             )}
           </TaskData>

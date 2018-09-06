@@ -36,13 +36,9 @@ class EditTaskForm extends Component {
     const { keyName, editTask, makeTaskEditable } = this.props;
 
     const taskTitle = this.taskTitleRef.current.value;
-    const taskDesc = this.taskDescRef.current.value;
-    const taskEstTime = this.taskEstTime.current.value;
 
     const task = {
-      taskTitle,
-      taskDesc,
-      taskEstTime
+      taskTitle
     };
 
     editTask(keyName, task);
@@ -58,7 +54,7 @@ class EditTaskForm extends Component {
   };
 
   render() {
-    const { taskTitle, taskDesc, taskEstTime } = this.props;
+    const { taskTitle } = this.props;
     return (
       <EditTask onClick={this.hideModal}>
         <EditModal onSubmit={this.updateTask}>
@@ -68,27 +64,9 @@ class EditTaskForm extends Component {
             type="text"
             placeholder="Task"
             defaultValue={taskTitle}
+            maxLength={50}
             required
           />
-          <br />
-          <Label htmlFor="task-description">Task description(optional)</Label>
-          <StyledTextarea
-            innerRef={this.taskDescRef}
-            type="text"
-            placeholder="Description"
-            defaultValue={taskDesc}
-            rows="5"
-            cols="20"
-          />
-          <br />
-          <Label htmlFor="est-time">Estimated Time(optional)</Label>
-          <StyledInput
-            innerRef={this.taskEstTime}
-            type="number"
-            placeholder="Estimated Time"
-            defaultValue={taskEstTime}
-          />
-          <br />
           <SubmitButton type="submit">Submit</SubmitButton>
         </EditModal>
       </EditTask>
