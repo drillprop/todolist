@@ -55,7 +55,6 @@ class Switch extends Component {
     const { isTaskDone, keyName, doneTask } = this.props;
     return (
       <SwitchContainer>
-        <span>Done</span>
         <StyledSwitch
           checked={isTaskDone}
           type="checkbox"
