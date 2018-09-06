@@ -9,7 +9,6 @@ const Icon = styled.svg`
   width: 21px;
   margin-right: 15px;
 `;
-
 const InfoIcon = props => {
   return (
     <Icon
