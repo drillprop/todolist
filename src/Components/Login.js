@@ -42,11 +42,7 @@ class Login extends Component {
   componentWillMount() {
     fireBaseApp.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({
-          authenticated: true,
-          currentUser: user,
-          loading: false
-        });
+        this.handleLogin(user);
       } else {
         this.setState({
           authenticated: false,
@@ -57,6 +53,14 @@ class Login extends Component {
     });
   }
 
+  handleLogin = user => {
+    this.setState({
+      authenticated: true,
+      currentUser: user,
+      loading: false
+    });
+  };
+
   loginMethod = e => {
     e.preventDefault();
     const email = this.userNameRef.current.value;
@@ -65,7 +69,6 @@ class Login extends Component {
     fireBaseApp
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.setState({ logged: true }))
       .catch(err => console.log(err));
   };
 
