@@ -1,7 +1,7 @@
 {
   "name": "todoapp",
   "version": "0.1.0",
-  "homepage": "https://abraxaswisz.github.io/todolist",
+  "homepage": "https://drillprop.github.io/todolist/",
   "private": true,
   "dependencies": {
     "firebase": "^5.11.1",
